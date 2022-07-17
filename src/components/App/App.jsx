@@ -19,7 +19,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
 import DogList from '../DogList/DogList';
+import AddDog from '../AddDog/AddDog';
 
 import './App.css';
 
@@ -55,6 +57,14 @@ function App() {
             path="/list"
           >
             <DogList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Dog List else shows LoginPage
+            exact
+            path="/add"
+          >
+            <AddDog />
           </ProtectedRoute>
 
           {/* For protected routes, the view could show one of several things on the same route.

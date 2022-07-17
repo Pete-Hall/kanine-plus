@@ -35,6 +35,10 @@ function Nav() {
             <Link className="navLink" to="/list">
               Dog List
             </Link>
+
+            <Link className="navLink" to="/add">
+              Add Dog
+            </Link>
             
             <Link className="navLink" to="/user">
               Home
