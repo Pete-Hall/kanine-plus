@@ -7,6 +7,7 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   
   let userRole = 'user';
+  // default value for user is 1. (1 = user) (2 = admin)
   if( user.role === 2) {
     userRole = 'admin'
   };
