@@ -7,11 +7,18 @@ import { useSelector } from 'react-redux';
 function Nav() {
   const user = useSelector((store) => store.user);
 
+  let userRole = 'user';
+  // default value for user is 1. (1 = user) (2 = admin)
+  if( user.role === 2) {
+    userRole = 'admin'
+  };
+
   return (
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">Kanine+</h2>
       </Link>
+      <p>Welcome, {user.username}! ({userRole})</p>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
@@ -24,6 +31,11 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
+            
+            <Link className="navLink" to="/list">
+              Dog List
+            </Link>
+            
             <Link className="navLink" to="/user">
               Home
             </Link>
