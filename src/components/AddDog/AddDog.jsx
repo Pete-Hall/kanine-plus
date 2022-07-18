@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -7,25 +7,43 @@ import { useSelector } from 'react-redux';
 function AddDog() {
 
   const dispatch = useDispatch();
+
+  /* Reducers */
   const origins = useSelector((store) => store.origins);
   const routes = useSelector((store) => store.routes);
 
-
+  /* Send dispatches to start SAGAs */
   useEffect(() => {
     dispatch({ type: 'GET_ORIGINS' });
     dispatch({ type: 'GET_ROUTES' });
   }, []);
 
+  /* Hooks */
   const [monday, setMonday] = useState(false);
   const [tuesday, setTuesday] = useState(false);
   const [wednesday, setWednesday] = useState(false);
   const [thursday, setThursday] = useState(false);
   const [friday, setFriday] = useState(false);
 
+  const [address, setAddress] = useState('');
+  const [dogAge, setDogAge] = useState(0);
+  const [dogBreed, setDogBreed] = useState('');
+  const [dogName, setDogName] = useState('');
+  const [dogOrigin, setDogOrigin] = useState('');
+  const [dogRoute, setDogRoute] = useState('');
+  const [dropoff, setDropoff] = useState('');
+  const [ownerEmail, setOwnerEmail] = useState('');
+  const [ownerName, setOwnerName] = useState('');
+  const [ownerPhone1, setOwnerPhone1] = useState(0);
+  const [ownerPhone2, setOwnerPhone2] = useState(0);
+  const [pickup, setPickup] = useState('');
+
+  /* When a day variable is changed, console.log the current value of each day */
   useEffect(() => {
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
   }, [monday, tuesday, wednesday, thursday, friday]);
 
+  /* ///// Event handler's for Schedule ///// */
   const handleMonday = () => {
     setMonday(!monday)
   };
@@ -45,6 +63,11 @@ function AddDog() {
   const handleFriday = () => {
     setFriday(!friday);
   };
+  /*///////////////////////////////////////*/
+
+  const handleDogName = (e) => {
+    console.log(e.target.value);
+  }
 
   const handleOrigin = (event) => {
     console.log(event.target.value)
@@ -54,13 +77,12 @@ function AddDog() {
     console.log(event.target.value)
   };
 
-
   return (
     <div className='container'>
       <Grid container>
 
         <Grid item xs={12}>
-          Dog Name: <TextField label="Dog" />
+          Dog Name: <TextField onChange={handleDogName} label="Dog" />
         </Grid>
 
         <Grid item xs={6}>
@@ -92,7 +114,6 @@ function AddDog() {
       </Grid>
       } */}
 
-        {/* Working conditional rendering with MAPPING */}
         <Grid item xs={6}>
           Origin:
           {origins.length > 0 &&
@@ -119,7 +140,6 @@ function AddDog() {
           Owner Phone 2: <TextField label="Phone (secondary)" />
         </Grid>
 
-        {/* Add schedule options */}
         <Grid item xs={6}>
           Schedule: <FormGroup row>
             {/* checked={monday} */}
@@ -149,9 +169,16 @@ function AddDog() {
           Drop Off: <TextField label="Drop Off Instructions" />
         </Grid>
 
+        <Grid item xs={6}>
+          <Button>Cancel</Button>
+        </Grid>
+
+        <Grid item xs={6}>
+          <Button>Save</Button>
+        </Grid>
+
       </Grid>
     </div>
-
   );
 }
 
