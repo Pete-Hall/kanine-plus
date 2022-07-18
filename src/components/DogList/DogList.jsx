@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { DataGrid} from '@mui/x-data-grid';
 import { Button } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 
 
 function DogList(props) {
 
 const dispatch = useDispatch();
+const history = useHistory();
 const dogs = useSelector((store) => store.dogs);
 
 const [gridData, setGridData] = useState([]);
@@ -21,6 +23,7 @@ useEffect(() => {
 
 const dogDetails = (e) => {
   console.log(e);
+  history.push(`/details/${e}`)
 }
 
 const getFullSchedule = (params) => {
@@ -81,7 +84,7 @@ const columns = [
   return (
     <div className='container'>
       <h2>Dog List</h2>
-      <ul style={{ height: 250, width: '75%' }}>
+      <div style={{ height: 250, width: '75%' }}>
         {
           dogs.length > 0 ?
           // dogs.map(dog => (
@@ -98,7 +101,7 @@ const columns = [
           :
           <p>Loading...</p>
         }
-      </ul>
+      </div>
       
       
     </div>

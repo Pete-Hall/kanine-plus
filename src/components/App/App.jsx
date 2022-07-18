@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import DogList from '../DogList/DogList';
 import AddDog from '../AddDog/AddDog';
+import DogDetails from '../DogDetails/DogDetails';
 
 import './App.css';
 
@@ -60,7 +61,15 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows Dog List else shows LoginPage
+            // logged in shows Dog Details else shows LoginPage
+            exact
+            path="/details/:id"
+          >
+            <DogDetails />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Add Dog else shows LoginPage
             exact
             path="/add"
           >

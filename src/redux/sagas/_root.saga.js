@@ -6,6 +6,7 @@ import originSaga from './origin.saga';
 import routeSaga from './route.saga';
 import addDogSaga from './addDog.saga';
 import dogSaga from './dog.saga';
+import detailsSaga from './details.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     routeSaga(), // TYPE: 'GET_ROUTES'
     addDogSaga(), // TYPE: 'ADD_DOG'
     dogSaga(), // TYPE: 'GET_DOGS'
+    detailsSaga(), // TYPE: 'GET_DETAILS'
   ]);
 }
