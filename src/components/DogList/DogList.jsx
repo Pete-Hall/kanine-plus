@@ -34,6 +34,12 @@ const getFullSchedule = (params) => {
   if(params.row.wednesday) {
     schedule = [...schedule, 'W']
   }
+  if(params.row.thursday) {
+    schedule = [...schedule, 'R']
+  }
+  if(params.row.friday) {
+    schedule = [...schedule, 'F']
+  }
   return schedule;
 }
 
