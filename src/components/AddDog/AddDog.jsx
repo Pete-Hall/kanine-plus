@@ -65,25 +65,13 @@ function AddDog() {
         Dog Name: <TextField label="Dog" />
       </Grid>
       <Grid item xs={6}>
-        Address: <TextField label="Address" />
+        Age: <TextField label="Age" />
       </Grid>
       <Grid item xs={6}>
         Breed: <TextField label="Breed" />
       </Grid>
       <Grid item xs={6}>
-        Owner Name: <TextField label="Owner" />
-      </Grid>
-      <Grid item xs={6}>
-        Owner Email: <TextField label="Email" />
-      </Grid>
-      <Grid item xs={6}>
-        Pick Up: <TextField label="Pick Up Instructions" />
-      </Grid>
-      <Grid item xs={6}>
-        Drop Off: <TextField label="Drop Off Instructions" />
-      </Grid>
-      <Grid item xs={6}>
-        Age: <TextField label="Age" />
+        Address: <TextField label="Address" />
       </Grid>
       <Grid item xs={6}>
         {/* origin */}
@@ -98,9 +86,14 @@ function AddDog() {
       </RadioGroup>
       }
       </Grid>
-      
+      <Grid item xs={6}>
+        Owner Name: <TextField label="Owner" />
+      </Grid>
       <Grid item xs={6}>
         Owner Phone 1: <TextField label="Phone (primary)" />
+      </Grid>
+      <Grid item xs={6}>
+        Owner Email: <TextField label="Email" />
       </Grid>
       <Grid item xs={6}>
         Owner Phone 2: <TextField label="Phone (secondary)" />
@@ -125,6 +118,12 @@ function AddDog() {
           <FormControlLabel value="4" control={<Radio onChange={handleOrigin} />} label="Far" />
           <FormControlLabel value="5" control={<Radio onChange={handleOrigin} />} label="Floater" />
       </RadioGroup>
+      </Grid>
+      <Grid item xs={12}>
+        Pick Up: <TextField label="Pick Up Instructions" />
+      </Grid>
+      <Grid item xs={12}>
+        Drop Off: <TextField label="Drop Off Instructions" />
       </Grid>
     </Grid>
   </div>
