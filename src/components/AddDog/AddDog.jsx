@@ -1,17 +1,24 @@
 import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 
 
 function AddDog() {
+
+  const dispatch = useDispatch();
+  const origins = useSelector((store) => store.origins);
+
+  useEffect(() => {
+    dispatch({type: 'GET_ORIGINS'});
+  }, []);
 
   const [monday, setMonday] = useState(false);
   const [tuesday, setTuesday] = useState(false);
   const [wednesday, setWednesday] = useState(false);
   const [thursday, setThursday] = useState(false);
   const [friday, setFriday] = useState(false);
-
 
   useEffect(()=>{
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
@@ -36,14 +43,6 @@ function AddDog() {
   const handleFriday = () => {
     setFriday(!friday);
   };
-
-  // const Item = styled(Paper)(({ theme }) => ({
-  //   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  //   ...theme.typography.body2,
-  //   padding: theme.spacing(1),
-  //   textAlign: 'center',
-  //   color: theme.palette.text.secondary,
-  // }));
 
   return (
     <div className='container'>
