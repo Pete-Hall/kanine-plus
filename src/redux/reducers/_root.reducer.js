@@ -4,6 +4,7 @@ import user from './user.reducer';
 import origins from './origin.reducer';
 import routes from './route.reducer';
 import addDog from './addDog.reducer';
+import dogs from './dog.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   origins, // TYPE: 'SET_ORIGINS'
   routes, // TYPE: 'SET_ORIGINS'
   addDog, // TYPE: 'SEND_DOG'
+  dogs, // TYPE: 'SET_DOGS'
 
 });
 
