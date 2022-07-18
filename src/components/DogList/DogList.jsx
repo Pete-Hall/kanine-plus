@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { DataGrid} from '@mui/x-data-grid';
+import { Button } from '@mui/material';
 
 
 function DogList(props) {
@@ -18,23 +19,21 @@ useEffect(() => {
 //   setGridData(dogs);
 // }, [dogs]);
 
+const dogDetails = (e) => {
+  console.log(e);
+}
+
 const getFullSchedule = (params) => {
   let schedule = [];
   if(params.row.monday) {
     schedule = [...schedule, 'M']
-    if(params.row.tuesday) {
-      schedule = [...schedule, 'T']
-      if(params.row.wednesday) {
-        schedule = [...schedule, 'W']
-        if(params.row.thursday) {
-          schedule = [...schedule, 'R']
-          if(params.row.friday) {
-            schedule = [...schedule, 'F']
-          } 
-        } 
-      }
-    } 
   } 
+  if(params.row.tuesday) {
+    schedule = [...schedule, 'T']
+  }
+  if(params.row.wednesday) {
+    schedule = [...schedule, 'W']
+  }
   return schedule;
 }
 
@@ -70,6 +69,17 @@ const columns = [
     width: 90,
     valueGetter: getFullSchedule
   },
+  {
+    field: 'actions',
+    type: 'actions',
+    headerName: 'Delete',
+    width: 90,
+    getActions: ({id}) => {
+      return [
+        <Button onClick={() => dogDetails(id)}>Dog Details</Button>
+      ]
+    }
+  },
 ]
 
   return (
@@ -87,7 +97,7 @@ const columns = [
         columns={columns}
         // rows={[{id: 1, name: 'test'}]}
         rows={dogs}
-        // getRowId={(dog) => dog.Id}
+        getRowId={(dog) => dog.id} 
         />
           :
           <p>Loading...</p>
