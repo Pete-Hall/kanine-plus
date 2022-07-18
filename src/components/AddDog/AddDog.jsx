@@ -44,7 +44,26 @@ function AddDog() {
   }, [monday, tuesday, wednesday, thursday, friday]);
 
   const cancelDog = () => {
+    setAddress('');
+    setDogAge(0);
+    setDogBreed('');
     setDogName('');
+    setDogOrigin('');
+    setDogRoute('');
+    setDropoff('');
+    setOwnerEmail('');
+    setOwnerName('');
+    setOwnerPhone1(0);
+    setOwnerPhone2(0);
+    setPickup('');
+
+    setMonday(false);
+    setTuesday(false);
+    setWednesday(false);
+    setThursday(false);
+    setFriday(false);
+
+
   };
 
   /* ///// Event handler's for Schedule ///// */
@@ -149,15 +168,15 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={6}>
-          Age: <TextField onChange={handleDogAge} label="Age" type="number" />
+          Age: <TextField onChange={handleDogAge} label="Age" type="number" value={dogAge} />
         </Grid>
 
         <Grid item xs={6}>
-          Breed: <TextField onChange={handleDogBreed} label="Breed" />
+          Breed: <TextField onChange={handleDogBreed} label="Breed" value={dogBreed} />
         </Grid>
 
         <Grid item xs={6}>
-          Address: <TextField onChange={handleDogAddress} label="Address" />
+          Address: <TextField onChange={handleDogAddress} label="Address" value={address} />
         </Grid>
 
         {/* origin */}
@@ -188,29 +207,29 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={6}>
-          Owner Name: <TextField onChange={handleOwnerName} label="Owner" />
+          Owner Name: <TextField onChange={handleOwnerName} label="Owner" value={ownerName} />
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 1: <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number" />
+          Owner Phone 1: <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number" value={ownerPhone1} />
         </Grid>
 
         <Grid item xs={6}>
-          Owner Email: <TextField onChange={handleOwnerEmail} label="Email" />
+          Owner Email: <TextField onChange={handleOwnerEmail} label="Email" value={ownerEmail} />
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 2: <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number" />
+          Owner Phone 2: <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number" value={ownerPhone2} />
         </Grid>
 
         <Grid item xs={6}>
           Schedule: <FormGroup row>
             {/* checked={monday} */}
-            <FormControlLabel label="M" control={<Checkbox onChange={handleMonday} />} labelPlacement="top" />
-            <FormControlLabel label="T" control={<Checkbox onChange={handleTuesday} />} labelPlacement="top" />
-            <FormControlLabel label="W" control={<Checkbox onChange={handleWednesday} />} labelPlacement="top" />
-            <FormControlLabel label="R" control={<Checkbox onChange={handleThursday} />} labelPlacement="top" />
-            <FormControlLabel label="F" control={<Checkbox onChange={handleFriday} />} labelPlacement="top" />
+            <FormControlLabel label="M" control={<Checkbox checked={monday} onChange={handleMonday} />} labelPlacement="top" />
+            <FormControlLabel label="T" control={<Checkbox checked={tuesday} onChange={handleTuesday} />} labelPlacement="top" />
+            <FormControlLabel label="W" control={<Checkbox checked={wednesday} onChange={handleWednesday} />} labelPlacement="top" />
+            <FormControlLabel label="R" control={<Checkbox checked={thursday} onChange={handleThursday} />} labelPlacement="top" />
+            <FormControlLabel label="F" control={<Checkbox checked={friday} onChange={handleFriday} />} labelPlacement="top" />
           </FormGroup><br />
         </Grid>
 
@@ -225,11 +244,11 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={12}>
-          Pick Up: <TextField onChange={handlePickup} label="Pick Up Instructions" />
+          Pick Up: <TextField onChange={handlePickup} label="Pick Up Instructions" value={pickup} />
         </Grid>
 
         <Grid item xs={12}>
-          Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions" />
+          Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions" value={dropoff} />
         </Grid>
 
         <Grid item xs={6}>
