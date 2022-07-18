@@ -46,17 +46,6 @@ function AddDog() {
   const handleOrigin = (event) => {
     console.log(event.target.value)
   }
- 
-  // const radioIterator = () => {
-  //   <RadioGroup>
-  //     {/* <FormControlLabel value="1" control={<Radio onChange={handleOrigin} />} label="Rescue" />
-  //     <FormControlLabel value="2" control={<Radio onChange={handleOrigin} />} label="Breeder" />
-  //     <FormControlLabel value="3" control={<Radio onChange={handleOrigin} />} label="Other" /> */}
-  //     {origins.map(origin => (
-  //       <FormControlLabel value={origin.id} control={<Radio key={origin.id} onChange={handleOrigin} />} label={origin.type} />
-  //     ))}
-  //   </RadioGroup>
-  // }
 
   return (
     <div className='container'>
@@ -73,18 +62,33 @@ function AddDog() {
       <Grid item xs={6}>
         Address: <TextField label="Address" />
       </Grid>
-      <Grid item xs={6}>
+
         {/* origin */}
-      {
-      origins.length === 0 ?
+      {/* {
+      origins.length < 0 ?
+      <Grid item xs={6}>
       <p>Loading . . .</p>
+      </Grid>
       :
-      <RadioGroup row defaultValue="0">
-          <FormControlLabel value="1" control={<Radio onChange={handleOrigin} />} label="Rescue" />
-          <FormControlLabel value="2" control={<Radio onChange={handleOrigin} />} label="Breeder" />
-          <FormControlLabel value="3" control={<Radio onChange={handleOrigin} />} label="Other" />
-      </RadioGroup>
-      }
+      <Grid item xs={6}>
+        <p>Origin Map:</p>
+        <RadioGroup>
+          {origins.map((origin)=>(
+            <FormControlLabel key={origin.id} value={origin.id} control={<Radio  onChange={handleOrigin} />} label={origin.type} />
+          ))}
+        </RadioGroup>
+      </Grid>
+      } */}
+      
+      {/* Working conditional rendering with MAPPING */}
+      <Grid item xs={6}>
+        Origin:
+        {origins.length > 0 &&
+        <RadioGroup row defaultValue={0}>
+          {origins.map((origin)=>(
+            <FormControlLabel key={origin.id} value={origin.id} control={<Radio  onChange={handleOrigin} />} label={origin.type} />
+          ))}
+        </RadioGroup>}
       </Grid>
       <Grid item xs={6}>
         Owner Name: <TextField label="Owner" />
