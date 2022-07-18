@@ -2,11 +2,13 @@ import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Rad
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 
 function AddDog() {
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   /* Reducers */
   const origins = useSelector((store) => store.origins);
@@ -29,7 +31,7 @@ function AddDog() {
   const [dogAge, setDogAge] = useState(0);
   const [dogBreed, setDogBreed] = useState('');
   const [dogName, setDogName] = useState('');
-  const [dogOrigin, setDogOrigin] = useState('');
+  const [dogOrigin, setDogOrigin] = useState(0);
   const [dogRoute, setDogRoute] = useState('');
   const [dropoff, setDropoff] = useState('');
   const [ownerEmail, setOwnerEmail] = useState('');
@@ -43,27 +45,8 @@ function AddDog() {
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
   }, [monday, tuesday, wednesday, thursday, friday]);
 
-  const cancelDog = () => {
-    setAddress('');
-    setDogAge(0);
-    setDogBreed('');
-    setDogName('');
-    setDogOrigin('');
-    setDogRoute('');
-    setDropoff('');
-    setOwnerEmail('');
-    setOwnerName('');
-    setOwnerPhone1(0);
-    setOwnerPhone2(0);
-    setPickup('');
-
-    setMonday(false);
-    setTuesday(false);
-    setWednesday(false);
-    setThursday(false);
-    setFriday(false);
-
-
+  const clearInputs = () => {
+    history.push('/add');
   };
 
   /* ///// Event handler's for Schedule ///// */
@@ -157,6 +140,7 @@ function AddDog() {
       driving_routeID: dogRoute
     };
     console.log(newDog);
+    clearInputs();
   }
 
   return (
@@ -164,19 +148,19 @@ function AddDog() {
       <Grid container>
 
         <Grid item xs={12}>
-          Dog Name: <TextField onChange={handleDogName} label="Dog" value={dogName} />
+          Dog Name: <TextField onChange={handleDogName} label="Dog"/>
         </Grid>
 
         <Grid item xs={6}>
-          Age: <TextField onChange={handleDogAge} label="Age" type="number" value={dogAge} />
+          Age: <TextField onChange={handleDogAge} label="Age" type="number"/>
         </Grid>
 
         <Grid item xs={6}>
-          Breed: <TextField onChange={handleDogBreed} label="Breed" value={dogBreed} />
+          Breed: <TextField onChange={handleDogBreed} label="Breed"/>
         </Grid>
 
         <Grid item xs={6}>
-          Address: <TextField onChange={handleDogAddress} label="Address" value={address} />
+          Address: <TextField onChange={handleDogAddress} label="Address"/>
         </Grid>
 
         {/* origin */}
@@ -207,29 +191,29 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={6}>
-          Owner Name: <TextField onChange={handleOwnerName} label="Owner" value={ownerName} />
+          Owner Name: <TextField onChange={handleOwnerName} label="Owner"/>
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 1: <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number" value={ownerPhone1} />
+          Owner Phone 1: <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number"/>
         </Grid>
 
         <Grid item xs={6}>
-          Owner Email: <TextField onChange={handleOwnerEmail} label="Email" value={ownerEmail} />
+          Owner Email: <TextField onChange={handleOwnerEmail} label="Email"/>
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 2: <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number" value={ownerPhone2} />
+          Owner Phone 2: <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number"/>
         </Grid>
 
         <Grid item xs={6}>
           Schedule: <FormGroup row>
             {/* checked={monday} */}
-            <FormControlLabel label="M" control={<Checkbox checked={monday} onChange={handleMonday} />} labelPlacement="top" />
-            <FormControlLabel label="T" control={<Checkbox checked={tuesday} onChange={handleTuesday} />} labelPlacement="top" />
-            <FormControlLabel label="W" control={<Checkbox checked={wednesday} onChange={handleWednesday} />} labelPlacement="top" />
-            <FormControlLabel label="R" control={<Checkbox checked={thursday} onChange={handleThursday} />} labelPlacement="top" />
-            <FormControlLabel label="F" control={<Checkbox checked={friday} onChange={handleFriday} />} labelPlacement="top" />
+            <FormControlLabel label="M" control={<Checkbox onChange={handleMonday} />} labelPlacement="top" />
+            <FormControlLabel label="T" control={<Checkbox onChange={handleTuesday} />} labelPlacement="top" />
+            <FormControlLabel label="W" control={<Checkbox onChange={handleWednesday} />} labelPlacement="top" />
+            <FormControlLabel label="R" control={<Checkbox onChange={handleThursday} />} labelPlacement="top" />
+            <FormControlLabel label="F" control={<Checkbox onChange={handleFriday} />} labelPlacement="top" />
           </FormGroup><br />
         </Grid>
 
@@ -244,15 +228,15 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={12}>
-          Pick Up: <TextField onChange={handlePickup} label="Pick Up Instructions" value={pickup} />
+          Pick Up: <TextField onChange={handlePickup} label="Pick Up Instructions"/>
         </Grid>
 
         <Grid item xs={12}>
-          Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions" value={dropoff} />
+          Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions"/>
         </Grid>
 
         <Grid item xs={6}>
-          <Button onClick={cancelDog}>Cancel</Button>
+          <Button onClick={clearInputs}>Cancel</Button>
         </Grid>
 
         <Grid item xs={6}>
