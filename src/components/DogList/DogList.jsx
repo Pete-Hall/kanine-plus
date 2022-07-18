@@ -14,9 +14,29 @@ useEffect(() => {
   dispatch({type: 'GET_DOGS'});
 }, [])
 
-useEffect(()=> {
-  setGridData(dogs);
-}, [dogs]);
+// useEffect(()=> { // https://www.freecodecamp.org/news/how-to-integrate-material-ui-data-grid-in-react-using-data-from-a-rest-api/ 
+//   setGridData(dogs);
+// }, [dogs]);
+
+const getFullSchedule = (params) => {
+  let schedule = [];
+  if(params.row.monday) {
+    schedule = [...schedule, 'M']
+    if(params.row.tuesday) {
+      schedule = [...schedule, 'T']
+      if(params.row.wednesday) {
+        schedule = [...schedule, 'W']
+        if(params.row.thursday) {
+          schedule = [...schedule, 'R']
+          if(params.row.friday) {
+            schedule = [...schedule, 'F']
+          } 
+        } 
+      }
+    } 
+  } 
+  return schedule;
+}
 
 const columns = [
   {
@@ -30,12 +50,12 @@ const columns = [
     width: 90
   },
   {
-    field: 'monday',
-    headerName: 'Monday',
+    field: 'friday',
+    headerName: 'Friday',
     width: 90
   },
   {
-    field: 'driving_route',
+    field: 'driving_routeID',
     headerName: 'Route',
     width: 90
   },
@@ -43,6 +63,12 @@ const columns = [
     field: 'dog_details',
     headerName: 'Dog Details',
     width: 90
+  },
+  {
+    field: 'schedule',
+    headerName: 'Schedule',
+    width: 90,
+    valueGetter: getFullSchedule
   },
 ]
 
@@ -60,7 +86,7 @@ const columns = [
           <DataGrid
         columns={columns}
         // rows={[{id: 1, name: 'test'}]}
-        rows={gridData}
+        rows={dogs}
         // getRowId={(dog) => dog.Id}
         />
           :
