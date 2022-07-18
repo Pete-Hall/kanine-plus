@@ -1,5 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
@@ -44,10 +43,25 @@ function AddDog() {
     setFriday(!friday);
   };
 
+  const handleOrigin = (event) => {
+    console.log(event.target.value)
+  }
+ 
+  // const radioIterator = () => {
+  //   <RadioGroup>
+  //     {/* <FormControlLabel value="1" control={<Radio onChange={handleOrigin} />} label="Rescue" />
+  //     <FormControlLabel value="2" control={<Radio onChange={handleOrigin} />} label="Breeder" />
+  //     <FormControlLabel value="3" control={<Radio onChange={handleOrigin} />} label="Other" /> */}
+  //     {origins.map(origin => (
+  //       <FormControlLabel value={origin.id} control={<Radio key={origin.id} onChange={handleOrigin} />} label={origin.type} />
+  //     ))}
+  //   </RadioGroup>
+  // }
+
   return (
     <div className='container'>
     <Grid container>
-      <Grid item xs={6}>
+      <Grid item xs={12}>
         Dog Name: <TextField label="Dog" />
       </Grid>
       <Grid item xs={6}>
@@ -55,17 +69,6 @@ function AddDog() {
       </Grid>
       <Grid item xs={6}>
         Breed: <TextField label="Breed" />
-      </Grid>
-      {/* Add schedule options */}
-      <Grid item xs={6}>
-        <FormGroup row>
-          {/* checked={monday} */}
-          <FormControlLabel label="M" control={<Checkbox onChange={handleMonday} />} labelPlacement="top" />
-          <FormControlLabel label="T" control={<Checkbox onChange={handleTuesday}  />} labelPlacement="top" />
-          <FormControlLabel label="W" control={<Checkbox onChange={handleWednesday}/>} labelPlacement="top" />
-          <FormControlLabel label="R" control={<Checkbox onChange={handleThursday} />} labelPlacement="top" />
-          <FormControlLabel label="F" control={<Checkbox onChange={handleFriday} />} labelPlacement="top" />
-        </FormGroup><br/>
       </Grid>
       <Grid item xs={6}>
         Owner Name: <TextField label="Owner" />
@@ -84,15 +87,44 @@ function AddDog() {
       </Grid>
       <Grid item xs={6}>
         {/* origin */}
+      {
+      origins.length === 0 ?
+      <p>Loading . . .</p>
+      :
+      <RadioGroup row defaultValue="0">
+          <FormControlLabel value="1" control={<Radio onChange={handleOrigin} />} label="Rescue" />
+          <FormControlLabel value="2" control={<Radio onChange={handleOrigin} />} label="Breeder" />
+          <FormControlLabel value="3" control={<Radio onChange={handleOrigin} />} label="Other" />
+      </RadioGroup>
+      }
       </Grid>
-      <Grid item xs={6}>
-        {/* route */}
-      </Grid>
+      
       <Grid item xs={6}>
         Owner Phone 1: <TextField label="Phone (primary)" />
       </Grid>
       <Grid item xs={6}>
         Owner Phone 2: <TextField label="Phone (secondary)" />
+      </Grid>
+      {/* Add schedule options */}
+      <Grid item xs={6}>
+        Schedule: <FormGroup row>
+          {/* checked={monday} */}
+          <FormControlLabel label="M" control={<Checkbox onChange={handleMonday} />} labelPlacement="top" />
+          <FormControlLabel label="T" control={<Checkbox onChange={handleTuesday}  />} labelPlacement="top" />
+          <FormControlLabel label="W" control={<Checkbox onChange={handleWednesday}/>} labelPlacement="top" />
+          <FormControlLabel label="R" control={<Checkbox onChange={handleThursday} />} labelPlacement="top" />
+          <FormControlLabel label="F" control={<Checkbox onChange={handleFriday} />} labelPlacement="top" />
+        </FormGroup><br/>
+      </Grid>
+      <Grid item xs={6}>
+        {/* route */}
+        Route: <RadioGroup row defaultValue="0">
+          <FormControlLabel value="1" control={<Radio onChange={handleOrigin} />} label="Emerson" />
+          <FormControlLabel value="2" control={<Radio onChange={handleOrigin} />} label="Tangletown" />
+          <FormControlLabel value="3" control={<Radio onChange={handleOrigin} />} label="Misfits" />
+          <FormControlLabel value="4" control={<Radio onChange={handleOrigin} />} label="Far" />
+          <FormControlLabel value="5" control={<Radio onChange={handleOrigin} />} label="Floater" />
+      </RadioGroup>
       </Grid>
     </Grid>
   </div>
