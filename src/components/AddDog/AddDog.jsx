@@ -11,6 +11,7 @@ function AddDog() {
 
   useEffect(() => {
     dispatch({type: 'GET_ORIGINS'});
+    dispatch({type: 'GET_ROUTES'});
   }, []);
 
   const [monday, setMonday] = useState(false);
@@ -45,20 +46,29 @@ function AddDog() {
 
   const handleOrigin = (event) => {
     console.log(event.target.value)
-  }
+  };
+
+  const handleRoute = (event) => {
+    console.log(event.target.value)
+  };
+  
 
   return (
     <div className='container'>
     <Grid container>
+
       <Grid item xs={12}>
         Dog Name: <TextField label="Dog" />
       </Grid>
+
       <Grid item xs={6}>
         Age: <TextField label="Age" />
       </Grid>
+
       <Grid item xs={6}>
         Breed: <TextField label="Breed" />
       </Grid>
+
       <Grid item xs={6}>
         Address: <TextField label="Address" />
       </Grid>
@@ -90,18 +100,23 @@ function AddDog() {
           ))}
         </RadioGroup>}
       </Grid>
+
       <Grid item xs={6}>
         Owner Name: <TextField label="Owner" />
       </Grid>
+
       <Grid item xs={6}>
         Owner Phone 1: <TextField label="Phone (primary)" />
       </Grid>
+
       <Grid item xs={6}>
         Owner Email: <TextField label="Email" />
       </Grid>
+
       <Grid item xs={6}>
         Owner Phone 2: <TextField label="Phone (secondary)" />
       </Grid>
+
       {/* Add schedule options */}
       <Grid item xs={6}>
         Schedule: <FormGroup row>
@@ -113,22 +128,26 @@ function AddDog() {
           <FormControlLabel label="F" control={<Checkbox onChange={handleFriday} />} labelPlacement="top" />
         </FormGroup><br/>
       </Grid>
+
       <Grid item xs={6}>
         {/* route */}
         Route: <RadioGroup row defaultValue="0">
-          <FormControlLabel value="1" control={<Radio onChange={handleOrigin} />} label="Emerson" />
-          <FormControlLabel value="2" control={<Radio onChange={handleOrigin} />} label="Tangletown" />
-          <FormControlLabel value="3" control={<Radio onChange={handleOrigin} />} label="Misfits" />
-          <FormControlLabel value="4" control={<Radio onChange={handleOrigin} />} label="Far" />
-          <FormControlLabel value="5" control={<Radio onChange={handleOrigin} />} label="Floater" />
+          <FormControlLabel value="1" control={<Radio onChange={handleRoute} />} label="Emerson" />
+          <FormControlLabel value="2" control={<Radio onChange={handleRoute} />} label="Tangletown" />
+          <FormControlLabel value="3" control={<Radio onChange={handleRoute} />} label="Misfits" />
+          <FormControlLabel value="4" control={<Radio onChange={handleRoute} />} label="Far" />
+          <FormControlLabel value="5" control={<Radio onChange={handleRoute} />} label="Floater" />
       </RadioGroup>
       </Grid>
+
       <Grid item xs={12}>
         Pick Up: <TextField label="Pick Up Instructions" />
       </Grid>
+
       <Grid item xs={12}>
         Drop Off: <TextField label="Drop Off Instructions" />
       </Grid>
+
     </Grid>
   </div>
 
