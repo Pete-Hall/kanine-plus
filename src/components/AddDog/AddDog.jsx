@@ -140,6 +140,7 @@ function AddDog() {
       driving_routeID: dogRoute
     };
     console.log(newDog);
+    dispatch({type: 'ADD_DOG', payload: newDog});
     clearInputs();
   }
 
