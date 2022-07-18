@@ -43,6 +43,10 @@ function AddDog() {
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
   }, [monday, tuesday, wednesday, thursday, friday]);
 
+  const cancelDog = () => {
+    setDogName('');
+  };
+
   /* ///// Event handler's for Schedule ///// */
   const handleMonday = () => {
     setMonday(!monday)
@@ -65,36 +69,95 @@ function AddDog() {
   };
   /*///////////////////////////////////////*/
 
+  const handleDogAddress = (e) => {
+    setAddress(e.target.value);
+  };
+  
+  const handleDogAge = (e) => {
+    setDogAge(e.target.value);
+  };
+
+  const handleDogBreed = (e) => {
+    setDogBreed(e.target.value);
+  };
+  
   const handleDogName = (e) => {
-    console.log(e.target.value);
+    setDogName(e.target.value);
+  };
+
+  const handleDogOrigin = (e) => {
+    setDogOrigin(e.target.value)
+  };
+
+  const handleDogRoute = (e) => {
+    setDogRoute(e.target.value)
+  };
+
+  const handleDropoff = (e) => {
+    setDropoff(e.target.value);
+  };
+
+  const handleOwnerEmail = (e) => {
+    setOwnerEmail(e.target.value);
+  };
+
+  const handleOwnerName = (e) => {
+    setOwnerName(e.target.value);
+  };
+
+  const handleOwnerPhone1 = (e) => {
+    setOwnerPhone1(e.target.value);
+  };
+
+  const handleOwnerPhone2 = (e) => {
+    setOwnerPhone2(e.target.value);
+  };
+
+  const handlePickup = (e) => {
+    setPickup(e.target.value);
+  };
+
+  const sendDog = () => {
+    let newDog = {
+      dog_name: dogName,
+      address: address,
+      breed: dogBreed,
+      age: dogAge,
+      monday: monday,
+      tuesday: tuesday,
+      wednesday: wednesday,
+      thursday: thursday,
+      friday: friday,
+      owner_name: ownerName,
+      owner_email: ownerEmail,
+      owner_phone_one: ownerPhone1,
+      owner_phone_two: ownerPhone2,
+      pick_up: pickup,
+      drop_off: dropoff,
+      originID: dogOrigin,
+      driving_routeID: dogRoute
+    };
+    console.log(newDog);
   }
-
-  const handleOrigin = (event) => {
-    console.log(event.target.value)
-  };
-
-  const handleRoute = (event) => {
-    console.log(event.target.value)
-  };
 
   return (
     <div className='container'>
       <Grid container>
 
         <Grid item xs={12}>
-          Dog Name: <TextField onChange={handleDogName} label="Dog" />
+          Dog Name: <TextField onChange={handleDogName} label="Dog" value={dogName} />
         </Grid>
 
         <Grid item xs={6}>
-          Age: <TextField label="Age" />
+          Age: <TextField onChange={handleDogAge} label="Age" type="number" />
         </Grid>
 
         <Grid item xs={6}>
-          Breed: <TextField label="Breed" />
+          Breed: <TextField onChange={handleDogBreed} label="Breed" />
         </Grid>
 
         <Grid item xs={6}>
-          Address: <TextField label="Address" />
+          Address: <TextField onChange={handleDogAddress} label="Address" />
         </Grid>
 
         {/* origin */}
@@ -119,25 +182,25 @@ function AddDog() {
           {origins.length > 0 &&
             <RadioGroup row defaultValue={0}>
               {origins.map((origin) => (
-                <FormControlLabel key={origin.id} value={origin.id} control={<Radio onChange={handleOrigin} />} label={origin.type} />
+                <FormControlLabel key={origin.id} value={origin.id} control={<Radio onChange={handleDogOrigin} />} label={origin.type} />
               ))}
             </RadioGroup>}
         </Grid>
 
         <Grid item xs={6}>
-          Owner Name: <TextField label="Owner" />
+          Owner Name: <TextField onChange={handleOwnerName} label="Owner" />
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 1: <TextField label="Phone (primary)" />
+          Owner Phone 1: <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number" />
         </Grid>
 
         <Grid item xs={6}>
-          Owner Email: <TextField label="Email" />
+          Owner Email: <TextField onChange={handleOwnerEmail} label="Email" />
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 2: <TextField label="Phone (secondary)" />
+          Owner Phone 2: <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number" />
         </Grid>
 
         <Grid item xs={6}>
@@ -156,25 +219,25 @@ function AddDog() {
           {routes.length > 0 &&
             <RadioGroup row defaultValue={0}>
               {routes.map((route) => (
-                <FormControlLabel key={route.id} value={route.id} control={<Radio onChange={handleRoute} />} label={route.name} />
+                <FormControlLabel key={route.id} value={route.id} control={<Radio onChange={handleDogRoute} />} label={route.name} />
               ))}
             </RadioGroup>}
         </Grid>
 
         <Grid item xs={12}>
-          Pick Up: <TextField label="Pick Up Instructions" />
+          Pick Up: <TextField onChange={handlePickup} label="Pick Up Instructions" />
         </Grid>
 
         <Grid item xs={12}>
-          Drop Off: <TextField label="Drop Off Instructions" />
+          Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions" />
         </Grid>
 
         <Grid item xs={6}>
-          <Button>Cancel</Button>
+          <Button onClick={cancelDog}>Cancel</Button>
         </Grid>
 
         <Grid item xs={6}>
-          <Button>Save</Button>
+          <Button onClick={sendDog}>Save</Button>
         </Grid>
 
       </Grid>
