@@ -18,19 +18,17 @@ function DogDetails() {
   }, [])
 
   useEffect(() => {
-    console.log(details);
+    console.log('details in DogDetails:', details);
   }, [details])
 
   return (
     <div className='container'>
       <h2>Dog Details</h2>
-      {details.length > 0 ?
-      <p>Loading...</p>
-      :
+      {details.length > 0 ? 
       <Grid container>
 
         <Grid item xs={12}>
-          <p>Dog Name:{details[0].dog_name} </p>
+          <p>Dog Name: {details[0].dog_name}</p>
         </Grid>
 
         <Grid item xs={6}>
@@ -94,6 +92,8 @@ function DogDetails() {
         </Grid>
 
       </Grid>
+      :
+      <p>Loading...</p>
       }   
     </div>
   );

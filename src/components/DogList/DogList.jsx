@@ -48,7 +48,7 @@ const getFullSchedule = (params) => {
 
 const columns = [
   {
-    field: 'id',
+    field: 'dogid',
     headerName: 'ID',
     width: 90
   },
@@ -96,7 +96,7 @@ const columns = [
         columns={columns}
         // rows={[{id: 1, name: 'test'}]}
         rows={dogs}
-        getRowId={(dog) => dog.id} 
+        getRowId={(dog) => dog.dogid} 
         />
           :
           <p>Loading...</p>
