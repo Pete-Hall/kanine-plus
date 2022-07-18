@@ -55,19 +55,9 @@ const columns = [
     width: 90
   },
   {
-    field: 'friday',
-    headerName: 'Friday',
-    width: 90
-  },
-  {
-    field: 'driving_routeID',
+    field: 'name',
     headerName: 'Route',
-    width: 90
-  },
-  {
-    field: 'dog_details',
-    headerName: 'Dog Details',
-    width: 90
+    width: 110
   },
   {
     field: 'schedule',
@@ -78,11 +68,11 @@ const columns = [
   {
     field: 'actions',
     type: 'actions',
-    headerName: 'Delete',
-    width: 90,
+    headerName: 'Dog Details',
+    width: 150,
     getActions: ({id}) => {
       return [
-        <Button onClick={() => dogDetails(id)}>Dog Details</Button>
+        <Button onClick={() => dogDetails(id)}>Dog Details</Button> // https://mui.com/x/react-data-grid/editing/#full-featured-crud-component
       ]
     }
   },
