@@ -57,12 +57,23 @@ function EditDog() {
       setWednesday(details[0].wednesday);
       setThursday(details[0].thursday);
       setFriday(details[0].friday);
-      setDogOrigin(details[0].originID)
-      setDogRoute(details[0].driving_routeID)
+      
+      setAddress(details[0].address)
+      setDogAge(details[0].age);
+      setDogBreed(details[0].breed);
+      setDogName(details[0].dog_name);
+      setDogOrigin(details[0].originID);
+      setDogRoute(details[0].driving_routeID);
+      setDropoff(details[0].drop_off);
+      setOwnerEmail(details[0].pick_up);
+      setOwnerName(details[0].owner_name);
+      setOwnerPhone1(details[0].owner_phone_one);
+      setOwnerPhone2(details[0].owner_phone_two);
+      setPickup(details[0].pick_up);
     }
   }, [details])
 
-  const clearInputs = () => {
+  const goBack = () => {
     history.push(`/details/${id}`);
   };
 
@@ -140,6 +151,7 @@ function EditDog() {
 
   const sendDog = () => {
     let newDog = {
+      id: id,
       dog_name: dogName,
       address: address,
       breed: dogBreed,
@@ -158,9 +170,9 @@ function EditDog() {
       originID: dogOrigin,
       driving_routeID: dogRoute
     };
-    console.log(newDog);
-    // dispatch({type: 'ADD_DOG', payload: newDog}); // Will be a new dispatch to UPDATE
-    clearInputs();
+    console.log('info to update:', newDog);
+    // dispatch({type: 'UPDATE_DOG', payload: newDog});
+    // goBack();
   }
 
   return (
@@ -258,11 +270,11 @@ function EditDog() {
         </Grid>
 
         <Grid item xs={6}>
-          <Button onClick={clearInputs}>Cancel</Button>
+          <Button onClick={goBack}>Cancel</Button>
         </Grid>
 
         <Grid item xs={6}>
-          <Button>Save</Button>
+          <Button onClick={sendDog}>Save</Button>
         </Grid>
 
       </Grid>
