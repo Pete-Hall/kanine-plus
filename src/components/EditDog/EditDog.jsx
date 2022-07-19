@@ -9,13 +9,13 @@ function EditDog() {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const details = useSelector((store) => store.details);
   
   let { id } = useParams();
 
   /* Reducers */
   const origins = useSelector((store) => store.origins);
   const routes = useSelector((store) => store.routes);
+  const details = useSelector((store) => store.details);
 
   /* Send dispatches to start SAGAs */
   useEffect(() => {
@@ -50,7 +50,7 @@ function EditDog() {
   }, [monday, tuesday, wednesday, thursday, friday]);
 
   const clearInputs = () => {
-    history.push(`/add${id}`);
+    history.push(`/details/${id}`);
   };
 
   /* ///// Event handler's for Schedule ///// */
@@ -144,7 +144,7 @@ function EditDog() {
       driving_routeID: dogRoute
     };
     console.log(newDog);
-    dispatch({type: 'ADD_DOG', payload: newDog});
+    // dispatch({type: 'ADD_DOG', payload: newDog}); // Will be a new dispatch to UPDATE
     clearInputs();
   }
 
@@ -153,7 +153,7 @@ function EditDog() {
       <Grid container>
 
         <Grid item xs={12}>
-          Dog Name: <TextField onChange={handleDogName} label="Dog"/>
+          Dog Name: <TextField onChange={handleDogName}label="Dog"/>
         </Grid>
 
         <Grid item xs={6}>

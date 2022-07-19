@@ -25,6 +25,10 @@ function DogDetails() {
     history.push('/list');
   }
 
+  const goToEdit = () => {
+    history.push(`/edit/${id}`)
+  }
+
   return (
     <div className='container'>
       <h2>Dog Details</h2>
@@ -103,7 +107,7 @@ function DogDetails() {
         </Grid>
 
         <Grid item xs={4}>
-          <Button>Edit</Button>
+          <Button onClick={goToEdit}>Edit</Button>
         </Grid>
 
       </Grid>
