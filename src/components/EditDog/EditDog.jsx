@@ -151,7 +151,6 @@ function EditDog() {
 
   const sendDog = () => {
     let newDog = {
-      id: id,
       dog_name: dogName,
       address: address,
       breed: dogBreed,
@@ -168,10 +167,11 @@ function EditDog() {
       pick_up: pickup,
       drop_off: dropoff,
       originID: dogOrigin,
-      driving_routeID: dogRoute
+      driving_routeID: dogRoute,
+      id: id
     };
     console.log('info to update:', newDog);
-    // dispatch({type: 'UPDATE_DOG', payload: newDog});
+    dispatch({type: 'UPDATE_DOG', payload: newDog});
     // goBack();
   }
 
