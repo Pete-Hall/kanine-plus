@@ -49,6 +49,7 @@ function EditDog() {
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
   }, [monday, tuesday, wednesday, thursday, friday]);
 
+  /* When details is updated, run this conditional and if it's true, set the hooks to the values coming in the details reducer */
   useEffect(() => {
     if(details.length > 0) {
       setMonday(details[0].monday);
@@ -56,7 +57,7 @@ function EditDog() {
       setWednesday(details[0].wednesday);
       setThursday(details[0].thursday);
       setFriday(details[0].friday);
-
+      setDogOrigin(details[0].originID)
     }
   }, [details])
 
@@ -67,9 +68,6 @@ function EditDog() {
   /* ///// Event handler's for Schedule ///// */
   const handleMonday = () => {
     setMonday(!monday);
-    // if(details.length > 0) {
-    //   setMonday(details[0].monday);
-    // }
   };
 
   const handleTuesday = () => {
@@ -107,6 +105,7 @@ function EditDog() {
 
   const handleDogOrigin = (e) => {
     setDogOrigin(e.target.value)
+    console.log(e.target.value);
   };
 
   const handleDogRoute = (e) => {
@@ -186,7 +185,7 @@ function EditDog() {
 
         {/* origin */}
         {/* {
-      origins.length < 0 ?
+      origins.length === 0 ?
       <Grid item xs={6}>
       <p>Loading . . .</p>
       </Grid>
@@ -195,7 +194,7 @@ function EditDog() {
         <p>Origin Map:</p>
         <RadioGroup>
           {origins.map((origin)=>(
-            <FormControlLabel key={origin.id} value={origin.id} control={<Radio  onChange={handleOrigin} />} label={origin.type} />
+            <FormControlLabel key={origin.id} value={origin.id} control={<Radio  onChange={handleDogOrigin} />} label={origin.type} />
           ))}
         </RadioGroup>
       </Grid>
@@ -206,11 +205,11 @@ function EditDog() {
           {origins.length > 0 &&
             <RadioGroup row defaultValue={0}>
               {origins.map((origin) => (
-                <FormControlLabel key={origin.id} value={origin.id} control={<Radio onChange={handleDogOrigin} />} label={origin.type} />
+                <FormControlLabel key={origin.id} value={origin.id} control={<Radio onChange={handleDogOrigin} checked={dogOrigin == origin.id}/>} label={origin.type} />
               ))}
             </RadioGroup>}
         </Grid>
-
+      
         <Grid item xs={6}>
           Owner Name: <TextField onChange={handleOwnerName} label="Owner" defaultValue={details[0].owner_name}/>
         </Grid>
