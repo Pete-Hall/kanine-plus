@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux';
-import { Grid, Button } from '@mui/material';
+import { Grid, Button, Checkbox, FormControlLabel, FormGroup, } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -32,51 +32,58 @@ function DogDetails() {
         </Grid>
 
         <Grid item xs={6}>
-          Age:
+          <p>Age: {details[0].age}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Breed:
+          <p>Breed: {details[0].breed}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Address:
+          <p>Address: {details[0].address}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Origin:
+          <p>Origin: {details[0].type}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Owner Name:
+          <p>Owner Name: {details[0].owner_name}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 1:
+          <p>Owner Phone 1: {details[0].owner_phone_one}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Owner Email:
+          <p>Owner Email: {details[0].owner_email}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Owner Phone 2:
+          <p>Owner Phone 2: {details[0].owner_phone_two}</p>
         </Grid>
 
         <Grid item xs={6}>
-          Schedule:
+          Schedule: <FormGroup row>
+            {/* checked={monday} */}
+            <FormControlLabel label="M" control={<Checkbox checked={details[0].monday}/>} labelPlacement="top" />
+            <FormControlLabel label="T" control={<Checkbox checked={details[0].tuesday}/>} labelPlacement="top" />
+            <FormControlLabel label="W" control={<Checkbox checked={details[0].wednesday}/>} labelPlacement="top" />
+            <FormControlLabel label="R" control={<Checkbox checked={details[0].thursday}/>} labelPlacement="top" />
+            <FormControlLabel label="F" control={<Checkbox checked={details[0].friday}/>} labelPlacement="top" />
+          </FormGroup>
         </Grid>
 
         <Grid item xs={6}>
-          Route:
+          <p>Route: {details[0].name}</p>
         </Grid>
 
         <Grid item xs={12}>
-          Pick Up:
+          <p>Pick Up: {details[0].pick_up}</p>
         </Grid>
 
         <Grid item xs={12}>
-          Drop Off:
+          <p>Drop Off: {details[0].drop_off}</p>
         </Grid>
 
         <Grid item xs={4}>
