@@ -65,7 +65,7 @@ function EditDog() {
       setDogOrigin(details[0].originID);
       setDogRoute(details[0].driving_routeID);
       setDropoff(details[0].drop_off);
-      setOwnerEmail(details[0].pick_up);
+      setOwnerEmail(details[0].owner_email);
       setOwnerName(details[0].owner_name);
       setOwnerPhone1(details[0].owner_phone_one);
       setOwnerPhone2(details[0].owner_phone_two);
