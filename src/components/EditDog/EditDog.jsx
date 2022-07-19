@@ -49,7 +49,7 @@ function EditDog() {
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
   }, [monday, tuesday, wednesday, thursday, friday]);
 
-  /* When details is updated, run this conditional and if it's true, set the hooks to the values coming in the details reducer */
+  /* When details is updated, run this conditional and if it's true, set the hooks to the values coming in from the details reducer */
   useEffect(() => {
     if(details.length > 0) {
       setMonday(details[0].monday);
@@ -58,6 +58,7 @@ function EditDog() {
       setThursday(details[0].thursday);
       setFriday(details[0].friday);
       setDogOrigin(details[0].originID)
+      setDogRoute(details[0].driving_routeID)
     }
   }, [details])
 
@@ -110,6 +111,7 @@ function EditDog() {
 
   const handleDogRoute = (e) => {
     setDogRoute(e.target.value)
+    console.log(e.target.value);
   };
 
   const handleDropoff = (e) => {
@@ -242,7 +244,7 @@ function EditDog() {
           {routes.length > 0 &&
             <RadioGroup row defaultValue={0}>
               {routes.map((route) => (
-                <FormControlLabel key={route.id} value={route.id} control={<Radio onChange={handleDogRoute} />} label={route.name} />
+                <FormControlLabel key={route.id} value={route.id} control={<Radio onChange={handleDogRoute} checked={dogRoute == route.id}/>} label={route.name} />
               ))}
             </RadioGroup>}
         </Grid>
