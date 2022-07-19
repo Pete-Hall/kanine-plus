@@ -21,6 +21,10 @@ function DogDetails() {
     console.log('details in DogDetails:', details);
   }, [details])
 
+  const goBack = () => {
+    history.push('/list');
+  }
+
   return (
     <div className='container'>
       <h2>Dog Details</h2>
@@ -60,7 +64,11 @@ function DogDetails() {
         </Grid>
 
         <Grid item xs={6}>
-          <p>Owner Phone 2: {details[0].owner_phone_two}</p>
+          {details[0].owner_phone_two > 0 ?
+            <p>Owner Phone 2: {details[0].owner_phone_two}</p>
+            :
+            <p>Owner Phone 2: N/A</p>
+          }
         </Grid>
 
         <Grid item xs={6}>
@@ -87,7 +95,7 @@ function DogDetails() {
         </Grid>
 
         <Grid item xs={4}>
-          <Button>Cancel</Button>
+          <Button onClick={goBack}>Back</Button>
         </Grid>
 
         <Grid item xs={4}>
