@@ -43,7 +43,8 @@ CREATE TABLE "dog" (
 
 -- Create the note table
 CREATE TABLE "note" (
-	"id" SERIAL PRIMARY KEY
+	"id" SERIAL PRIMARY KEY,
+	"content" VARCHAR (1000)
 );
 
 -- Add in data for origin

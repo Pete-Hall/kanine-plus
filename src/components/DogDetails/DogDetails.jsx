@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux';
-import { Grid, Button, Checkbox, FormControlLabel, FormGroup, } from '@mui/material';
+import { Grid, Button, Checkbox, FormControlLabel, FormGroup, TextField, Box, Card, CardActions, CardContent, CardHeader } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -33,7 +33,8 @@ function DogDetails() {
     <div className='container'>
       <h2>Dog Details</h2>
       {details.length > 0 ? 
-      <Grid container>
+      <div>
+      <Grid container justifyContent="center">
 
         <Grid item xs={12}>
           <p>Dog Name: {details[0].dog_name}</p>
@@ -98,6 +99,29 @@ function DogDetails() {
           <p>Drop Off: {details[0].drop_off}</p>
         </Grid>
 
+        {/* <Grid item xs={12}>
+          <p>User</p>
+          <TextField multiline rows={3} fullWidth/>
+        </Grid> */}
+
+        <Grid item xs={8}>
+          <Box>
+          <Card variant="outlined">
+            <CardHeader title="User:"/>
+            <CardContent>
+              <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui.</p>
+            </CardContent>
+            <CardActions>
+              <Button>Delete Icon</Button>
+            </CardActions>
+          </Card>
+          </Box>
+        </Grid>
+
+      </Grid>
+
+      <Grid container>
+
         <Grid item xs={4}>
           <Button onClick={goBack}>Back</Button>
         </Grid>
@@ -111,6 +135,7 @@ function DogDetails() {
         </Grid>
 
       </Grid>
+      </div>
       :
       <p>Loading...</p>
       }   
