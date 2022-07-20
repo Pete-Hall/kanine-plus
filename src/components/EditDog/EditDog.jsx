@@ -24,7 +24,7 @@ function EditDog() {
     dispatch({type: 'GET_DETAILS', payload: id});
   }, []);
 
-  /* Hooks */
+  /* Hooks */ // could replace this with one hook (ex formData) and put an object of each hook in the useState. Spread operator to only update one in setFormDate
   const [monday, setMonday] = useState(false);
   const [tuesday, setTuesday] = useState(false);
   const [wednesday, setWednesday] = useState(false);
@@ -182,7 +182,7 @@ function EditDog() {
         <Grid container>
 
         <Grid item xs={12}>
-          Dog Name: <TextField onChange={handleDogName} label="Dog" defaultValue={details[0].dog_name}/>
+          Dog Name: <TextField required onChange={handleDogName} label="Dog" defaultValue={details[0].dog_name}/>
         </Grid>
 
         <Grid item xs={6}>
