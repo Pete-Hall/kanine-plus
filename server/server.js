@@ -15,6 +15,7 @@ const addDogRouter = require('./routes/addDog.router');
 const dogRouter = require('./routes/dog.router');
 const detailsRouter = require('./routes/details.router');
 const editDogRouter = require('./routes/editDog.router');
+const notesReduer = require('./routes/notes.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -35,6 +36,7 @@ app.use('/api/add', addDogRouter);
 app.use('/api/dog', dogRouter);
 app.use('/api/details', detailsRouter);
 app.use('/api/edit', editDogRouter);
+app.use('/api/notes', notesReduer);
 
 // Serve static files
 app.use(express.static('build'));

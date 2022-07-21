@@ -10,7 +10,7 @@ function DogDetails() {
   const history = useHistory();
   const details = useSelector((store) => store.details);
 
-  const [show, setShow] = useState(false);
+  const [newNoteMode, setNewNoteMode] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
 
   let { id } = useParams();
@@ -19,6 +19,7 @@ function DogDetails() {
   useEffect(() => {
     console.log('useParams id:', id);
     dispatch({ type: 'GET_DETAILS', payload: id });
+    dispatch({type: 'GET_NOTES', payload: id})
   }, [])
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function DogDetails() {
   }, [details])
 
   const addNote = () => {
-    setShow(!show);
+    setNewNoteMode(!newNoteMode);
     setButtonShow(!buttonShow);
   }
 
@@ -40,7 +41,7 @@ function DogDetails() {
 
   const saveNote = () => {
     setButtonShow(!buttonShow);
-    setShow(!show);
+    setNewNoteMode(!newNoteMode);
   }
 
   return (
@@ -120,7 +121,7 @@ function DogDetails() {
 
             <Grid item xs={12}>
               {
-                show ?
+                newNoteMode ?
                   (<div><TextField label="New Note" fullWidth /> 
                   </div>)
                   // make this a card with a text field in it to match the card layout of displayed notes?
@@ -130,6 +131,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={8}>
+              {/* conditional rendering, map through the notes */}
               <Box>
                 <Card variant="outlined">
                   <CardHeader title="User:" />
