@@ -5,14 +5,14 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
   // GET route code here
   console.log(req.params);
-  // const queryString = ``;
-  // values = [req.params.id];
-  // pool.query(queryString, values).then((result) => {
-  //   res.send(result.rows)
-  // }).catch((err) => {
-  //   console.log(err);
-  //   res.sendStatus(500);
-  // })
+  const queryString = `SELECT * FROM note JOIN "user" ON note."userID"="user".id WHERE note."dogID"=$1;`;
+  values = [req.params.id];
+  pool.query(queryString, values).then((result) => {
+    res.send(result.rows)
+  }).catch((err) => {
+    console.log(err);
+    res.sendStatus(500);
+  })
 });
 
 /**

@@ -9,6 +9,7 @@ function DogDetails() {
   const dispatch = useDispatch();
   const history = useHistory();
   const details = useSelector((store) => store.details);
+  const notes = useSelector((store) => store.notes);
 
   const [newNoteMode, setNewNoteMode] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
@@ -136,7 +137,7 @@ function DogDetails() {
                 <Card variant="outlined">
                   <CardHeader title="User:" />
                   <CardContent>
-                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui.</p>
+                    <p>{JSON.stringify(notes)}.</p>
                   </CardContent>
                   <CardActions>
                     <Button>Delete Icon</Button>
