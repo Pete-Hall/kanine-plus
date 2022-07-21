@@ -17,7 +17,6 @@ function DogDetails() {
 
   let { id } = useParams();
 
-
   useEffect(() => {
     console.log('useParams id:', id);
     dispatch({ type: 'GET_DETAILS', payload: id });
@@ -46,6 +45,8 @@ function DogDetails() {
   }
 
   const saveNote = () => {
+    dispatch({type: 'ADD_NOTE', payload: {newNote}});
+    // console.log('new note!', newNote);
     setButtonShow(!buttonShow);
     setNewNoteMode(!newNoteMode);
   }
@@ -123,7 +124,7 @@ function DogDetails() {
             <Grid item xs={12}>
               {
                 newNoteMode ?
-                  (<div><TextField onClick={handleNoteChange} label="New Note" fullWidth />
+                  (<div><TextField onChange={handleNoteChange} label="New Note" fullWidth />
                   </div>)
                   // TODO: make this a card with a text field in it to match the card layout of displayed notes?
                   :

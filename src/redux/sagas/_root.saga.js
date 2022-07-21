@@ -9,6 +9,7 @@ import dogSaga from './dog.saga';
 import detailsSaga from './details.saga';
 import editDogSaga from './edit.saga';
 import notesSaga from './notes.saga';
+import addNoteSaga from './addNote.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -29,5 +30,6 @@ export default function* rootSaga() {
     detailsSaga(), // TYPE: 'GET_DETAILS'
     editDogSaga(), // TYPE: 'UPDATE_DOG'
     notesSaga(), // TYPE: 'GET_NOTES'
+    addNoteSaga(), // TYPE: 'ADD_NOTE'
   ]);
 }
