@@ -13,6 +13,7 @@ function DogDetails() {
 
   const [newNoteMode, setNewNoteMode] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
+  const [newNote, setNewNote] = useState('');
 
   let { id } = useParams();
 
@@ -20,7 +21,7 @@ function DogDetails() {
   useEffect(() => {
     console.log('useParams id:', id);
     dispatch({ type: 'GET_DETAILS', payload: id });
-    dispatch({type: 'GET_NOTES', payload: id})
+    dispatch({ type: 'GET_NOTES', payload: id })
   }, [])
 
   useEffect(() => {
@@ -38,6 +39,10 @@ function DogDetails() {
 
   const goToEdit = () => {
     history.push(`/edit/${id}`)
+  }
+
+  const handleNoteChange = (event) => {
+    setNewNote(event.target.value);
   }
 
   const saveNote = () => {
@@ -115,42 +120,41 @@ function DogDetails() {
               <p>Drop Off: {details[0].drop_off}</p>
             </Grid>
 
-            {/* <Grid item xs={12}>
-          <p>User</p>
-          <TextField multiline rows={3} fullWidth/>
-        </Grid> */}
-
             <Grid item xs={12}>
               {
                 newNoteMode ?
-                  (<div><TextField label="New Note" fullWidth /> 
+                  (<div><TextField onClick={handleNoteChange} label="New Note" fullWidth />
                   </div>)
-                  // make this a card with a text field in it to match the card layout of displayed notes?
+                  // TODO: make this a card with a text field in it to match the card layout of displayed notes?
                   :
-                  (<p></p>)
+                  (<div></div>)
               }
             </Grid>
 
             <Grid item xs={8}>
               {/* conditional rendering, map through the notes */}
-              <Box>
-                <Card variant="outlined">
-                  <CardHeader title="User:" />
-                  <CardContent>
-                    <p>{JSON.stringify(notes)}.</p>
-                  </CardContent>
-                  <CardActions>
-                    <Button>Delete Icon</Button>
-                  </CardActions>
-                </Card>
-              </Box>
+              {notes.length > 0 ?
+                <Box>
+                  {notes.map((note) => (
+                    <Card key={note.id} variant="outlined">
+                      <CardHeader title={note.username + ':'} />
+                      <CardContent>
+                        <p>{note.content}</p>
+                      </CardContent>
+                      <CardActions>
+                        <Button>Delete Icon</Button>
+                      </CardActions>
+                    </Card>
+                  ))}
+                </Box>
+                :
+                <div></div>
+              }
             </Grid>
 
           </Grid>
 
           <Grid container>
-
-
 
             {
               buttonShow ?
@@ -181,21 +185,14 @@ function DogDetails() {
 
                 </Grid>
             }
-            {/* 
-        <Grid item xs={4}>
-          <Button onClick={addNote}>Add Note</Button>
-        </Grid>
-
-        <Grid item xs={4}>
-          <Button onClick={goToEdit}>Edit</Button>
-        </Grid> */}
-
 
           </Grid>
+
         </div>
         :
         <p>Loading...</p>
       }
+
     </div>
   );
 }
