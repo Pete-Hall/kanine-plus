@@ -71,7 +71,7 @@ function EditDog() {
       setOwnerPhone2(details[0].owner_phone_two);
       setPickup(details[0].pick_up);
     }
-  }, [details])
+  }, [])
 
   const goBack = () => {
     history.push(`/details/${id}`);
@@ -190,7 +190,7 @@ function EditDog() {
         </Grid>
 
         <Grid item xs={6}>
-          Breed: <TextField onChange={handleDogBreed} label="Breed" defaultValue={details[0].type}/>
+          Breed: <TextField onChange={handleDogBreed} label="Breed" defaultValue={details[0].breed }/>
         </Grid>
 
         <Grid item xs={6}>

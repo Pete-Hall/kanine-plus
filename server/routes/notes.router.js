@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
   // GET route code here
   console.log(req.params);
-  const queryString = `SELECT * FROM note JOIN "user" ON note."userID"="user".id WHERE note."dogID"=$1;`;
+  const queryString = `SELECT note.id, note."userID", content, username  FROM note JOIN "user" ON note."userID"="user".id WHERE note."dogID"=$1;`;
   values = [req.params.id];
   pool.query(queryString, values).then((result) => {
     res.send(result.rows)
