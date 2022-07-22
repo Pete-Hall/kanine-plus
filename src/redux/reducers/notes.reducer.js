@@ -1,4 +1,4 @@
-const notesReduer = (state = {}, action) => {
+const notesReduer = (state = [], action) => {
   switch (action.type) {
     case 'SET_NOTES':
       return action.payload;

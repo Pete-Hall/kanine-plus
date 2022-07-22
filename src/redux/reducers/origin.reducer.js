@@ -1,4 +1,4 @@
-const originReducer = (state = {}, action) => {
+const originReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_ORIGINS':
       return action.payload;

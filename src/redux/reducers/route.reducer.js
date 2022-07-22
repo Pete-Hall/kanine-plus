@@ -1,4 +1,4 @@
-const routeReducer = (state = {}, action) => {
+const routeReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_ROUTES':
       return action.payload;

@@ -1,4 +1,4 @@
-const dogReducer = (state = {}, action) => {
+const dogReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_DOGS':
       return action.payload;
