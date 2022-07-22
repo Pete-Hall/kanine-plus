@@ -138,6 +138,7 @@ function DogDetails() {
                 <Box>
                   {notes.map((note) => (
                     <Card key={note.id} variant="outlined">
+                      {/* TODO: need to fix this with SQL. Also maybe put Grid item inside the map? */}
                       <CardHeader title={note.username + ':'} />
                       <CardContent>
                         <p>{note.content}</p>
