@@ -152,22 +152,34 @@ function AddDog() {
 
   return (
     <div className='container'>
-      <Grid container>
+      <Grid container sx={{ alignItems: 'center' }}>
 
-        <Grid item xs={6}>
-          Dog Name: <TextField onChange={handleDogName} label="Dog"/>
+        <Grid item xs={1} >
+          Dog Name: 
         </Grid>
 
-        <Grid item xs={6}>
-          Gender: <RadioGroup row>
+        <Grid item xs={5}>
+          <TextField onChange={handleDogName} label="Dog"/>
+        </Grid>
+        
+        <Grid item xs={1} >
+          Gender: 
+        </Grid>
+
+        <Grid item xs={5}>
+          <RadioGroup row>
             <FormControlLabel value={'Male'} control={<Radio onChange={handleDogGender}/>} label={'Male'} />
             <FormControlLabel value={'Female'} control={<Radio onChange={handleDogGender}/>} label={'Female'} />
           </RadioGroup>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={1} >
+          Age: 
+        </Grid>
+
+        <Grid item xs={5}>
           {/* Age: <TextField onChange={handleDogAge} label="Age" type="number"/> */}
-          Age: <RadioGroup row>
+          <RadioGroup row>
             <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge}/>} label={'Puppy'} />
             <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge}/>} label={'Young Adult'} />
             <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge}/>} label={'Mature Adult'} />
@@ -175,16 +187,27 @@ function AddDog() {
           </RadioGroup>
         </Grid>
 
-        <Grid item xs={6}>
-          Breed: <TextField onChange={handleDogBreed} label="Breed"/>
+        <Grid item xs={1} >
+          Breed: 
         </Grid>
 
-        <Grid item xs={6}>
-          Address: <TextField onChange={handleDogAddress} label="Address"/>
+        <Grid item xs={5}>
+          <TextField onChange={handleDogBreed} label="Breed"/>
         </Grid>
 
-        <Grid item xs={6}>
-          Origin:
+        <Grid item xs={1} >
+          Address: 
+        </Grid>
+
+        <Grid item xs={5}>
+          <TextField onChange={handleDogAddress} label="Address"/>
+        </Grid>
+
+        <Grid item xs={1} >
+          Origin: 
+        </Grid>
+
+        <Grid item xs={5}>
           {origins.length > 0 &&
             <RadioGroup row defaultValue={0}>
               {origins.map((origin) => (
@@ -193,24 +216,44 @@ function AddDog() {
             </RadioGroup>}
         </Grid>
 
-        <Grid item xs={6}>
-          Owner Name: <TextField onChange={handleOwnerName} label="Owner"/>
+        <Grid item xs={1} >
+          Owner Name: 
         </Grid>
 
-        <Grid item xs={6}>
-          Owner Phone 1: <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number"/>
+        <Grid item xs={5}>
+          <TextField onChange={handleOwnerName} label="Owner"/>
         </Grid>
 
-        <Grid item xs={6}>
-          Owner Email: <TextField onChange={handleOwnerEmail} label="Email"/>
+        <Grid item xs={1} >
+          Owner Phone 1: 
         </Grid>
 
-        <Grid item xs={6}>
-          Owner Phone 2: <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number"/>
+        <Grid item xs={5}>
+          <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number"/>
         </Grid>
 
-        <Grid item xs={6}>
-          Schedule: <FormGroup row>
+        <Grid item xs={1} >
+          Owner Email: 
+        </Grid>
+
+        <Grid item xs={5}>
+          <TextField onChange={handleOwnerEmail} label="Email"/>
+        </Grid>
+
+        <Grid item xs={1} >
+          Owner Phone 2: 
+        </Grid>
+
+        <Grid item xs={5}>
+          <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number"/>
+        </Grid>
+
+        <Grid item xs={1} >
+          Schedule: 
+        </Grid>
+
+        <Grid item xs={5}>
+          <FormGroup row>
             {/* checked={monday} */}
             <FormControlLabel label="M" control={<Checkbox onChange={handleMonday} />} labelPlacement="top" />
             <FormControlLabel label="T" control={<Checkbox onChange={handleTuesday} />} labelPlacement="top" />
@@ -220,8 +263,11 @@ function AddDog() {
           </FormGroup><br />
         </Grid>
 
-        <Grid item xs={6}>
-          Route:
+        <Grid item xs={1} >
+          Route: 
+        </Grid>
+
+        <Grid item xs={5}>
           {routes.length > 0 &&
             <RadioGroup row defaultValue={0}>
               {routes.map((route) => (
@@ -230,12 +276,20 @@ function AddDog() {
             </RadioGroup>}
         </Grid>
 
-        <Grid item xs={12}>
-          Pick Up: <TextField onChange={handlePickup} label="Pick Up Instructions"/>
+        <Grid item xs={1} >
+          Pick up: 
         </Grid>
 
-        <Grid item xs={12}>
-          Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions"/>
+        <Grid item xs={11}>
+          <TextField onChange={handlePickup} label="Pick Up Instructions"/>
+        </Grid>
+
+        <Grid item xs={1} >
+          Drop off: 
+        </Grid>
+
+        <Grid item xs={11}>
+          <TextField onChange={handleDropoff} label="Drop Off Instructions"/>
         </Grid>
 
         <Grid item xs={6}>

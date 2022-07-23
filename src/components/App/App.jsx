@@ -51,6 +51,14 @@ function App() {
           size: 'small'
         },
       },
+      MuiTextField: {
+        defaultProps: {
+          variant: 'outlined',
+          size: 'small',
+          margin: 'normal',
+          // multiline: 'true'
+        }
+      }
     },
   })
 
