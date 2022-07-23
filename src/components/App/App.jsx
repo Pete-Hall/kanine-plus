@@ -24,6 +24,7 @@ import DogList from '../DogList/DogList';
 import AddDog from '../AddDog/AddDog';
 import DogDetails from '../DogDetails/DogDetails';
 import EditDog from '../EditDog/EditDog';
+import MasterSchedule from '../MasterSchedule/MasterSchedule';
 
 import './App.css';
 
@@ -75,6 +76,14 @@ function App() {
             path="/edit/:id"
           >
             <EditDog />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Master Schedule else shows LoginPage
+            exact
+            path="/schedule"
+          >
+            <MasterSchedule />
           </ProtectedRoute>
 
           <ProtectedRoute

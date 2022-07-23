@@ -27,7 +27,7 @@ CREATE TABLE "dog" (
 	"dog_name" VARCHAR (255),
 	"address" VARCHAR (1000),
 	"breed" VARCHAR (255),
-	"age" INT,
+	"age" VARCHAR (255),
 	"monday" BOOLEAN,
 	"tuesday" BOOLEAN,
 	"wednesday" BOOLEAN,

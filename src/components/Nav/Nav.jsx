@@ -39,6 +39,10 @@ function Nav() {
             <Link className="navLink" to="/add">
               Add Dog
             </Link>
+
+            <Link className="navLink" to="/schedule">
+              Master Schedule
+            </Link>
             
             <Link className="navLink" to="/user">
               Home

@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio, Button } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio, Button, Select, MenuItem } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -28,7 +28,7 @@ function AddDog() {
   const [friday, setFriday] = useState(false);
 
   const [address, setAddress] = useState('');
-  const [dogAge, setDogAge] = useState(0);
+  const [dogAge, setDogAge] = useState('');
   const [dogBreed, setDogBreed] = useState('');
   const [dogName, setDogName] = useState('');
   const [dogOrigin, setDogOrigin] = useState(0);
@@ -77,6 +77,8 @@ function AddDog() {
   
   const handleDogAge = (e) => {
     setDogAge(e.target.value);
+    console.log(e.target.value);
+
   };
 
   const handleDogBreed = (e) => {
@@ -153,7 +155,13 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={6}>
-          Age: <TextField onChange={handleDogAge} label="Age" type="number"/>
+          {/* Age: <TextField onChange={handleDogAge} label="Age" type="number"/> */}
+          Age: <RadioGroup row>
+            <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge}/>} label={'Puppy'} />
+            <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge}/>} label={'Young Adult'} />
+            <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge}/>} label={'Mature Adult'} />
+            <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge}/>} label={'Senior Citizen'} />
+          </RadioGroup>
         </Grid>
 
         <Grid item xs={6}>
@@ -163,23 +171,6 @@ function AddDog() {
         <Grid item xs={6}>
           Address: <TextField onChange={handleDogAddress} label="Address"/>
         </Grid>
-
-        {/* origin */}
-        {/* {
-      origins.length < 0 ?
-      <Grid item xs={6}>
-      <p>Loading . . .</p>
-      </Grid>
-      :
-      <Grid item xs={6}>
-        <p>Origin Map:</p>
-        <RadioGroup>
-          {origins.map((origin)=>(
-            <FormControlLabel key={origin.id} value={origin.id} control={<Radio  onChange={handleOrigin} />} label={origin.type} />
-          ))}
-        </RadioGroup>
-      </Grid>
-      } */}
 
         <Grid item xs={6}>
           Origin:
