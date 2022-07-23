@@ -34,6 +34,7 @@ function EditDog() {
   const [address, setAddress] = useState('');
   const [dogAge, setDogAge] = useState('');
   const [dogBreed, setDogBreed] = useState('');
+  const [dogGender, setDogGender] = useState('');
   const [dogName, setDogName] = useState('');
   const [dogOrigin, setDogOrigin] = useState(0);
   const [dogRoute, setDogRoute] = useState('');
@@ -61,6 +62,7 @@ function EditDog() {
       setAddress(details[0].address)
       setDogAge(details[0].age);
       setDogBreed(details[0].breed);
+      setDogGender(details[0].gender);
       setDogName(details[0].dog_name);
       setDogOrigin(details[0].originID);
       setDogRoute(details[0].driving_routeID);
@@ -117,6 +119,10 @@ function EditDog() {
   const handleDogBreed = (e) => {
     setDogBreed(e.target.value);
   };
+
+  const handleDogGender = (e) => {
+    setDogGender(e.target.value);
+  }
   
   const handleDogName = (e) => {
     setDogName(e.target.value);
@@ -175,7 +181,8 @@ function EditDog() {
       drop_off: dropoff,
       originID: dogOrigin,
       driving_routeID: dogRoute,
-      id: id
+      id: id,
+      gender: dogGender
     };
     console.log('info to update:', newDog);
     dispatch({type: 'UPDATE_DOG', payload: newDog});
@@ -188,17 +195,24 @@ function EditDog() {
         details.length > 0 ?
         <Grid container>
 
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           Dog Name: <TextField required onChange={handleDogName} label="Dog" defaultValue={details[0].dog_name}/>
+        </Grid>
+
+        <Grid item xs={6}>
+          Gender: <RadioGroup row>
+            <FormControlLabel value={'Male'} control={<Radio onChange={handleDogGender} checked={dogGender === 'Male'}/>} label={'Male'} />
+            <FormControlLabel value={'Female'} control={<Radio onChange={handleDogGender} checked={dogGender === 'Female'}/>} label={'Female'} />
+          </RadioGroup>
         </Grid>
 
         <Grid item xs={6}>
           {/* Age: <TextField onChange={handleDogAge} label="Age" type="number" defaultValue={details[0].age}/> */}
           Age: <RadioGroup row>
-            <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Puppy'}/>} label={'Puppy'} />
-            <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Young Adult'}/>} label={'Young Adult'} />
-            <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Mature Adult'}/>} label={'Mature Adult'} />
-            <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Senior Citizen'}/>} label={'Senior Citizen'} />
+            <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Puppy'}/>} label={'Puppy'} />
+            <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Young Adult'}/>} label={'Young Adult'} />
+            <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Mature Adult'}/>} label={'Mature Adult'} />
+            <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Senior Citizen'}/>} label={'Senior Citizen'} />
           </RadioGroup>
         </Grid>
 
