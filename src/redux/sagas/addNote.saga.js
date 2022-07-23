@@ -7,7 +7,7 @@ function* addNote(action) {
     console.log(action.payload);
     const response = yield axios.post('/api/addNote', action.payload);
     console.log('add note response from saga:', response);
-    yield put({type: 'GET_NOTES', payload: response.data})
+    yield put({type: 'GET_NOTES', payload: action.payload.id})
   } catch (err) {
     console.log('Error adding dog to DB:', err);
     alert('Error adding dog from DB')
