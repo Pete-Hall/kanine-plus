@@ -87,16 +87,9 @@ const columns = [
       <div style={{ height: 250, width: '75%' }}>
         {
           dogs.length > 0 ?
-          // dogs.map(dog => (
-          //   <li key={dog.id}>{dog.dog_name}, {dog.monday.toString()} ,{dog.driving_routeID}</li>
-          //   // <p>{JSON.stringify(dog)}</p>
-            
-          // ))
           <DataGrid
         columns={columns}
-        // rows={[{id: 1, name: 'test'}]}
         rows={dogs}
-        // getRowId={(dog) => dog.id} 
         />
           :
           <p>Loading...</p>

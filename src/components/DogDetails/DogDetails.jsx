@@ -156,7 +156,7 @@ function DogDetails() {
                         <p>{note.content}</p>
                       </CardContent>
                       <CardActions>
-                        <Button onClick={() => handleDeleteNote(note.id)}>Delete</Button>
+                        <Button onClick={() => handleDeleteNote(note.id)} color="error">Delete</Button>
                       </CardActions>
                     </Card>
                   ))}
@@ -174,11 +174,11 @@ function DogDetails() {
               buttonShow ?
                 <Grid container>
                   <Grid item xs={4}>
-                    <Button onClick={goBack}>Back</Button>
+                    <Button onClick={goBack} color="secondary">Back</Button>
                   </Grid>
 
                   <Grid item xs={4}>
-                    <Button onClick={addNote}>Add Note</Button>
+                    <Button onClick={addNote} color="success">Add Note</Button>
                   </Grid>
 
                   <Grid item xs={4}>
@@ -190,11 +190,11 @@ function DogDetails() {
                 <Grid container>
 
                   <Grid item xs={4}>
-                    <Button onClick={addNote}>Cancel</Button>
+                    <Button onClick={addNote} color="secondary">Cancel</Button>
                   </Grid>
 
                   <Grid item xs={4}>
-                    <Button onClick={saveNote}>Save Note</Button>
+                    <Button onClick={saveNote} color="success">Save Note</Button>
                   </Grid>
 
                 </Grid>

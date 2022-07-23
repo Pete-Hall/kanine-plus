@@ -280,11 +280,11 @@ function EditDog() {
         </Grid>
 
         <Grid item xs={4}>
-          <Button onClick={goBack}>Cancel</Button>
+          <Button onClick={goBack} color="secondary">Cancel</Button>
         </Grid>
 
         <Grid item xs={4}>
-          <Button onClick={deleteDog}>Delete</Button>
+          <Button onClick={deleteDog} color="error">Delete</Button>
         </Grid>
 
         <Grid item xs={4}>

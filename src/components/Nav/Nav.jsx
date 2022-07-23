@@ -18,7 +18,13 @@ function Nav() {
       <Link to="/home">
         <h2 className="nav-title">Kanine+</h2>
       </Link>
-      <p>Welcome, {user.username}! ({userRole})</p>
+      
+      <div>
+        {user.id && (
+          <p>Welcome, {user.username}! ({userRole})</p>
+        )}
+      </div>
+
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
@@ -44,21 +50,21 @@ function Nav() {
               Master Schedule
             </Link>
             
-            <Link className="navLink" to="/user">
+            {/* <Link className="navLink" to="/user">
               Home
-            </Link>
+            </Link> */}
 
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Info Page
-            </Link>
+            </Link> */}
 
             <LogOutButton className="navLink" />
           </>
         )}
 
-        <Link className="navLink" to="/about">
+        {/* <Link className="navLink" to="/about">
           About
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

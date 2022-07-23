@@ -239,7 +239,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={6}>
-          <Button onClick={clearInputs}>Cancel</Button>
+          <Button onClick={clearInputs} color="secondary">Clear</Button>
         </Grid>
 
         <Grid item xs={6}>
