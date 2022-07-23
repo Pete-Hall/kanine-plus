@@ -9,7 +9,7 @@ function EditDog() {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  
+
   let { id } = useParams();
 
   /* Reducers */
@@ -21,7 +21,7 @@ function EditDog() {
   useEffect(() => {
     dispatch({ type: 'GET_ORIGINS' });
     dispatch({ type: 'GET_ROUTES' });
-    dispatch({type: 'GET_DETAILS', payload: id});
+    dispatch({ type: 'GET_DETAILS', payload: id });
   }, []);
 
   /* Hooks */ // could replace this with one hook (ex formData) and put an object of each hook in the useState. Spread operator to only update one in setFormDate
@@ -52,13 +52,13 @@ function EditDog() {
 
   /* When details is updated, run this conditional and if it's true, set the hooks to the values coming in from the details reducer */
   useEffect(() => {
-    if(details.length > 0) {
+    if (details.length > 0) {
       setMonday(details[0].monday);
       setTuesday(details[0].tuesday);
       setWednesday(details[0].wednesday);
       setThursday(details[0].thursday);
       setFriday(details[0].friday);
-      
+
       setAddress(details[0].address)
       setDogAge(details[0].age);
       setDogBreed(details[0].breed);
@@ -76,8 +76,8 @@ function EditDog() {
   }, [details])
 
   const deleteDog = () => {
-    console.log('delete dog:', details[0].id );
-    dispatch({type: 'DELETE_DOG', payload: details[0].id });
+    console.log('delete dog:', details[0].id);
+    dispatch({ type: 'DELETE_DOG', payload: details[0].id });
     history.push('/list');
   }
 
@@ -110,7 +110,7 @@ function EditDog() {
   const handleDogAddress = (e) => {
     setAddress(e.target.value);
   };
-  
+
   const handleDogAge = (e) => {
     setDogAge(e.target.value);
 
@@ -123,7 +123,7 @@ function EditDog() {
   const handleDogGender = (e) => {
     setDogGender(e.target.value);
   }
-  
+
   const handleDogName = (e) => {
     setDogName(e.target.value);
   };
@@ -185,7 +185,7 @@ function EditDog() {
       gender: dogGender
     };
     console.log('info to update:', newDog);
-    dispatch({type: 'UPDATE_DOG', payload: newDog});
+    dispatch({ type: 'UPDATE_DOG', payload: newDog });
     goBack();
   }
 
@@ -193,110 +193,164 @@ function EditDog() {
     <div className='container'>
       {
         details.length > 0 ?
-        <Grid container>
+          <Grid container sx={{ alignItems: 'center'}}>
 
-        <Grid item xs={6}>
-          Dog Name: <TextField required onChange={handleDogName} label="Dog" defaultValue={details[0].dog_name}/>
-        </Grid>
+            <Grid item xs={1} >
+              Dog Name:
+            </Grid>
 
-        <Grid item xs={6}>
-          Gender: <RadioGroup row>
-            <FormControlLabel value={'Male'} control={<Radio onChange={handleDogGender} checked={dogGender === 'Male'}/>} label={'Male'} />
-            <FormControlLabel value={'Female'} control={<Radio onChange={handleDogGender} checked={dogGender === 'Female'}/>} label={'Female'} />
-          </RadioGroup>
-        </Grid>
+            <Grid item xs={5}>
+              <TextField required onChange={handleDogName} label="Dog" defaultValue={details[0].dog_name} />
+            </Grid>
 
-        <Grid item xs={6}>
-          {/* Age: <TextField onChange={handleDogAge} label="Age" type="number" defaultValue={details[0].age}/> */}
-          Age: <RadioGroup row>
-            <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Puppy'}/>} label={'Puppy'} />
-            <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Young Adult'}/>} label={'Young Adult'} />
-            <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Mature Adult'}/>} label={'Mature Adult'} />
-            <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Senior Citizen'}/>} label={'Senior Citizen'} />
-          </RadioGroup>
-        </Grid>
+            <Grid item xs={1} >
+              Gender:
+            </Grid>
 
-        <Grid item xs={6}>
-          Breed: <TextField onChange={handleDogBreed} label="Breed" defaultValue={details[0].breed }/>
-        </Grid>
+            <Grid item xs={5}>
+              <RadioGroup row>
+                <FormControlLabel value={'Male'} control={<Radio onChange={handleDogGender} checked={dogGender === 'Male'} />} label={'Male'} />
+                <FormControlLabel value={'Female'} control={<Radio onChange={handleDogGender} checked={dogGender === 'Female'} />} label={'Female'} />
+              </RadioGroup>
+            </Grid>
 
-        <Grid item xs={6}>
-          Address: <TextField onChange={handleDogAddress} label="Address" defaultValue={details[0].address}/>
-        </Grid>
+            <Grid item xs={1} >
+              Age:
+            </Grid>
 
-        <Grid item xs={6}>
-          Origin:
-          {origins.length > 0 &&
-            <RadioGroup row defaultValue={0}>
-              {origins.map((origin) => (
-                <FormControlLabel key={origin.id} value={origin.id} control={<Radio onChange={handleDogOrigin} checked={dogOrigin == origin.id}/>} label={origin.type} />
-              ))}
-            </RadioGroup>}
-        </Grid>
-      
-        <Grid item xs={6}>
-          Owner Name: <TextField onChange={handleOwnerName} label="Owner" defaultValue={details[0].owner_name}/>
-        </Grid>
+            <Grid item xs={5}>
+              {/* Age: <TextField onChange={handleDogAge} label="Age" type="number" defaultValue={details[0].age}/> */}
+              <RadioGroup row>
+                <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Puppy'} />} label={'Puppy'} />
+                <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Young Adult'} />} label={'Young Adult'} />
+                <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Mature Adult'} />} label={'Mature Adult'} />
+                <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Senior Citizen'} />} label={'Senior Citizen'} />
+              </RadioGroup>
+            </Grid>
 
-        <Grid item xs={6}>
-          Owner Phone 1: <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number" defaultValue={details[0].owner_phone_one}/>
-        </Grid>
+            <Grid item xs={1} >
+              Breed:
+            </Grid>
 
-        <Grid item xs={6}>
-          Owner Email: <TextField onChange={handleOwnerEmail} label="Email" defaultValue={details[0].owner_email}/>
-        </Grid>
+            <Grid item xs={5}>
+              <TextField onChange={handleDogBreed} label="Breed" defaultValue={details[0].breed} />
+            </Grid>
 
-        <Grid item xs={6}>
-          Owner Phone 2: <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number" defaultValue={details[0].owner_phone_two}/>
-        </Grid>
+            <Grid item xs={1} >
+              Address:
+            </Grid>
 
-        <Grid item xs={6}>
-          Schedule: <FormGroup row>
-            {/* checked={monday} */}
-            <FormControlLabel label="M" control={<Checkbox checked={monday} onChange={handleMonday} />} labelPlacement="top" />
-            <FormControlLabel label="T" control={<Checkbox checked={tuesday} onChange={handleTuesday} />} labelPlacement="top" />
-            <FormControlLabel label="W" control={<Checkbox checked={wednesday} onChange={handleWednesday} />} labelPlacement="top" />
-            <FormControlLabel label="R" control={<Checkbox checked={thursday} onChange={handleThursday} />} labelPlacement="top" />
-            <FormControlLabel label="F" control={<Checkbox checked={friday} onChange={handleFriday} />} labelPlacement="top" />
-          </FormGroup><br />
-        </Grid>
+            <Grid item xs={5}>
+              <TextField onChange={handleDogAddress} label="Address" defaultValue={details[0].address} />
+            </Grid>
 
-        <Grid item xs={6}>
-          Route:
-          {routes.length > 0 &&
-            <RadioGroup row defaultValue={0}>
-              {routes.map((route) => (
-                <FormControlLabel key={route.id} value={route.id} control={<Radio onChange={handleDogRoute} checked={dogRoute == route.id}/>} label={route.name} />
-              ))}
-            </RadioGroup>}
-        </Grid>
+            <Grid item xs={1} >
+              Origin:
+            </Grid>
 
-        <Grid item xs={12}>
-          Pick Up: <TextField onChange={handlePickup} label="Pick Up Instructions" defaultValue={details[0].pick_up}/>
-        </Grid>
+            <Grid item xs={5}>
+              {origins.length > 0 &&
+                <RadioGroup row defaultValue={0}>
+                  {origins.map((origin) => (
+                    <FormControlLabel key={origin.id} value={origin.id} control={<Radio onChange={handleDogOrigin} checked={dogOrigin == origin.id} />} label={origin.type} />
+                  ))}
+                </RadioGroup>}
+            </Grid>
 
-        <Grid item xs={12}>
-          Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions" defaultValue={details[0].drop_off}/>
-        </Grid>
+            <Grid item xs={1} >
+              Owner Name:
+            </Grid>
 
-        <Grid item xs={4}>
-          <Button onClick={goBack} color="secondary">Cancel</Button>
-        </Grid>
+            <Grid item xs={5}>
+              <TextField onChange={handleOwnerName} label="Owner" defaultValue={details[0].owner_name} />
+            </Grid>
 
-        <Grid item xs={4}>
-          <Button onClick={deleteDog} color="error">Delete</Button>
-        </Grid>
+            <Grid item xs={1} >
+              Owner Phone 1:
+            </Grid>
 
-        <Grid item xs={4}>
-          <Button onClick={sendDog}>Save</Button>
-        </Grid>
+            <Grid item xs={5}>
+              <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number" defaultValue={details[0].owner_phone_one} />
+            </Grid>
 
-      </Grid>
-      :
-      <p>Loading</p>
+            <Grid item xs={1} >
+              Owner Email:
+            </Grid>
+
+            <Grid item xs={5}>
+              <TextField onChange={handleOwnerEmail} label="Email" defaultValue={details[0].owner_email} />
+            </Grid>
+
+            <Grid item xs={1} >
+              Owner Phone 2:
+            </Grid>
+
+            <Grid item xs={5}>
+              <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number" defaultValue={details[0].owner_phone_two} />
+            </Grid>
+
+            <Grid item xs={1} >
+              Schedule:
+            </Grid>
+
+            <Grid item xs={5}>
+              <FormGroup row>
+                {/* checked={monday} */}
+                <FormControlLabel label="M" control={<Checkbox checked={monday} onChange={handleMonday} />} labelPlacement="top" />
+                <FormControlLabel label="T" control={<Checkbox checked={tuesday} onChange={handleTuesday} />} labelPlacement="top" />
+                <FormControlLabel label="W" control={<Checkbox checked={wednesday} onChange={handleWednesday} />} labelPlacement="top" />
+                <FormControlLabel label="R" control={<Checkbox checked={thursday} onChange={handleThursday} />} labelPlacement="top" />
+                <FormControlLabel label="F" control={<Checkbox checked={friday} onChange={handleFriday} />} labelPlacement="top" />
+              </FormGroup><br />
+            </Grid>
+
+            <Grid item xs={1} >
+              Route:
+            </Grid>
+
+            <Grid item xs={5}>
+              {routes.length > 0 &&
+                <RadioGroup row defaultValue={0}>
+                  {routes.map((route) => (
+                    <FormControlLabel key={route.id} value={route.id} control={<Radio onChange={handleDogRoute} checked={dogRoute == route.id} />} label={route.name} />
+                  ))}
+                </RadioGroup>}
+            </Grid>
+
+            <Grid item xs={1} >
+              Pick up:
+            </Grid>
+
+            <Grid item xs={11}>
+              <TextField onChange={handlePickup} label="Pick Up Instructions" defaultValue={details[0].pick_up} />
+            </Grid>
+
+            <Grid item xs={1} >
+              Drop off:
+            </Grid>
+
+            <Grid item xs={11}>
+              <TextField onChange={handleDropoff} label="Drop Off Instructions" defaultValue={details[0].drop_off} />
+            </Grid>
+
+            <Grid item xs={4}>
+              <Button onClick={goBack} color="secondary">Cancel</Button>
+            </Grid>
+
+            <Grid item xs={4}>
+              <Button onClick={deleteDog} color="error">Delete</Button>
+            </Grid>
+
+            <Grid item xs={4}>
+              <Button onClick={sendDog}>Save</Button>
+            </Grid>
+
+          </Grid>
+          :
+          <p>Loading</p>
       }
-      
-     
+
+
     </div>
   );
 }
