@@ -40,8 +40,13 @@ function DogDetails() {
     history.push(`/edit/${id}`)
   }
 
-  const handleDeleteNote = (argID) => {
-    console.log('in delete note:', argID)
+  const handleDeleteNote = (specificNoteID) => {
+    console.log('in delete note:', specificNoteID)
+    let noteInfo = {
+      specificNoteID,
+      id
+    }
+    dispatch({type: 'DELETE_NOTE', payload: noteInfo})
   }
 
   const handleNoteChange = (event) => {
@@ -147,7 +152,7 @@ function DogDetails() {
                         <p>{note.content}</p>
                       </CardContent>
                       <CardActions>
-                        <Button onClick={() => dispatch({type: 'DELETE_NOTE', payload: note.id})}>Delete</Button>
+                        <Button onClick={() => handleDeleteNote(note.id)}>Delete</Button>
                       </CardActions>
                     </Card>
                   ))}

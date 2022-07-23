@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log(req.body.id, req.body.newNote);
-  console.log(req.user.id);
+  console.log(req.body);
+  // console.log(req.user.id);
   const queryString = `INSERT INTO note ("dogID", "userID", "content") VALUES ($1, $2, $3);`
   const values = [req.body.id, req.user.id, req.body.newNote];
   pool.query(queryString, values).then((result) => {
