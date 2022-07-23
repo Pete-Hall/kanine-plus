@@ -67,8 +67,12 @@ function DogDetails() {
         <div>
           <Grid container justifyContent="center">
 
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <p>Dog Name: {details[0].dog_name}</p>
+            </Grid>
+
+            <Grid item xs={6}>
+              <p>Dog Gender: {details[0].gender}</p>
             </Grid>
 
             <Grid item xs={6}>
