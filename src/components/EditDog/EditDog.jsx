@@ -32,7 +32,7 @@ function EditDog() {
   const [friday, setFriday] = useState(false);
 
   const [address, setAddress] = useState('');
-  const [dogAge, setDogAge] = useState(0);
+  const [dogAge, setDogAge] = useState('');
   const [dogBreed, setDogBreed] = useState('');
   const [dogName, setDogName] = useState('');
   const [dogOrigin, setDogOrigin] = useState(0);
@@ -71,7 +71,7 @@ function EditDog() {
       setOwnerPhone2(details[0].owner_phone_two);
       setPickup(details[0].pick_up);
     }
-  }, [])
+  }, [details])
 
   const deleteDog = () => {
     console.log('delete dog:', details[0].id );
@@ -111,6 +111,8 @@ function EditDog() {
   
   const handleDogAge = (e) => {
     setDogAge(e.target.value);
+    console.log(e.target.value);
+
   };
 
   const handleDogBreed = (e) => {
@@ -192,7 +194,13 @@ function EditDog() {
         </Grid>
 
         <Grid item xs={6}>
-          Age: <TextField onChange={handleDogAge} label="Age" type="number" defaultValue={details[0].age}/>
+          {/* Age: <TextField onChange={handleDogAge} label="Age" type="number" defaultValue={details[0].age}/> */}
+          Age: <RadioGroup row>
+            <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Puppy'}/>} label={'Puppy'} />
+            <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Young Adult'}/>} label={'Young Adult'} />
+            <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Mature Adult'}/>} label={'Mature Adult'} />
+            <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge} checked={dogAge == 'Senior Citizen'}/>} label={'Senior Citizen'} />
+          </RadioGroup>
         </Grid>
 
         <Grid item xs={6}>
