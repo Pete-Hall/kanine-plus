@@ -40,6 +40,10 @@ function DogDetails() {
     history.push(`/edit/${id}`)
   }
 
+  const handleDeleteNote = (argID) => {
+    console.log('in delete note:', argID)
+  }
+
   const handleNoteChange = (event) => {
     setNewNote(event.target.value);
   }
@@ -138,13 +142,12 @@ function DogDetails() {
                 <Box>
                   {notes.map((note) => (
                     <Card key={note.id} variant="outlined">
-                      {/* TODO: need to fix this with SQL. Also maybe put Grid item inside the map? */}
                       <CardHeader title={note.username + ':'} />
                       <CardContent>
                         <p>{note.content}</p>
                       </CardContent>
                       <CardActions>
-                        <Button>Delete Icon</Button>
+                        <Button onClick={() => dispatch({type: 'DELETE_NOTE', payload: note.id})}>Delete</Button>
                       </CardActions>
                     </Card>
                   ))}

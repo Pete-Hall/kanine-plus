@@ -17,6 +17,7 @@ const detailsRouter = require('./routes/details.router');
 const editDogRouter = require('./routes/editDog.router');
 const notesRouter = require('./routes/notes.router');
 const addNoteRouter = require('./routes/addNote.router');
+const deleteNoteRouter = require('./routes/deleteNote.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -39,6 +40,7 @@ app.use('/api/details', detailsRouter);
 app.use('/api/edit', editDogRouter);
 app.use('/api/notes', notesRouter);
 app.use('/api/addNote', addNoteRouter);
+app.use('/api/deleteNote', deleteNoteRouter);
 
 // Serve static files
 app.use(express.static('build'));

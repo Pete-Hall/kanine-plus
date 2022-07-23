@@ -9,8 +9,8 @@ function* addNote(action) {
     console.log('add note response from saga:', response);
     yield put({type: 'GET_NOTES', payload: action.payload.id})
   } catch (err) {
-    console.log('Error adding dog to DB:', err);
-    alert('Error adding dog from DB')
+    console.log('Error adding note to DB:', err);
+    alert('Error adding note from DB')
   }
 }
 
