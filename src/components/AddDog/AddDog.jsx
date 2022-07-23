@@ -30,6 +30,7 @@ function AddDog() {
   const [address, setAddress] = useState('');
   const [dogAge, setDogAge] = useState('');
   const [dogBreed, setDogBreed] = useState('');
+  const [dogGender, setDogGender] = useState('');
   const [dogName, setDogName] = useState('');
   const [dogOrigin, setDogOrigin] = useState(0);
   const [dogRoute, setDogRoute] = useState('');
@@ -77,13 +78,15 @@ function AddDog() {
   
   const handleDogAge = (e) => {
     setDogAge(e.target.value);
-    console.log(e.target.value);
-
   };
 
   const handleDogBreed = (e) => {
     setDogBreed(e.target.value);
   };
+
+  const handleDogGender = (e) => {
+    setDogGender(e.target.value);
+  }
   
   const handleDogName = (e) => {
     setDogName(e.target.value);
@@ -139,7 +142,8 @@ function AddDog() {
       pick_up: pickup,
       drop_off: dropoff,
       originID: dogOrigin,
-      driving_routeID: dogRoute
+      driving_routeID: dogRoute,
+      gender: dogGender
     };
     console.log(newDog);
     dispatch({type: 'ADD_DOG', payload: newDog});
@@ -150,8 +154,15 @@ function AddDog() {
     <div className='container'>
       <Grid container>
 
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           Dog Name: <TextField onChange={handleDogName} label="Dog"/>
+        </Grid>
+
+        <Grid item xs={6}>
+          Gender: <RadioGroup row>
+            <FormControlLabel value={'Male'} control={<Radio onChange={handleDogGender}/>} label={'Male'} />
+            <FormControlLabel value={'Female'} control={<Radio onChange={handleDogGender}/>} label={'Female'} />
+          </RadioGroup>
         </Grid>
 
         <Grid item xs={6}>

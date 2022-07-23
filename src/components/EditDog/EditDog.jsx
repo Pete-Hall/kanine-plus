@@ -111,7 +111,6 @@ function EditDog() {
   
   const handleDogAge = (e) => {
     setDogAge(e.target.value);
-    console.log(e.target.value);
 
   };
 
