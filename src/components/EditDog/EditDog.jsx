@@ -73,6 +73,12 @@ function EditDog() {
     }
   }, [])
 
+  const deleteDog = () => {
+    console.log('delete dog:', details[0].id );
+    dispatch({type: 'DELETE_DOG', payload: details[0].id });
+    history.push('/list');
+  }
+
   const goBack = () => {
     history.push(`/details/${id}`);
   };
@@ -197,23 +203,6 @@ function EditDog() {
           Address: <TextField onChange={handleDogAddress} label="Address" defaultValue={details[0].address}/>
         </Grid>
 
-        {/* origin */}
-        {/* {
-      origins.length === 0 ?
-      <Grid item xs={6}>
-      <p>Loading . . .</p>
-      </Grid>
-      :
-      <Grid item xs={6}>
-        <p>Origin Map:</p>
-        <RadioGroup>
-          {origins.map((origin)=>(
-            <FormControlLabel key={origin.id} value={origin.id} control={<Radio  onChange={handleDogOrigin} />} label={origin.type} />
-          ))}
-        </RadioGroup>
-      </Grid>
-      } */}
-
         <Grid item xs={6}>
           Origin:
           {origins.length > 0 &&
@@ -269,11 +258,15 @@ function EditDog() {
           Drop Off: <TextField onChange={handleDropoff} label="Drop Off Instructions" defaultValue={details[0].drop_off}/>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <Button onClick={goBack}>Cancel</Button>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={4}>
+          <Button onClick={deleteDog}>Delete</Button>
+        </Grid>
+
+        <Grid item xs={4}>
           <Button onClick={sendDog}>Save</Button>
         </Grid>
 
