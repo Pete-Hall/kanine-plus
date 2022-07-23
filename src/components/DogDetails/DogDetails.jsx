@@ -46,7 +46,7 @@ function DogDetails() {
       specificNoteID,
       id
     }
-    dispatch({type: 'DELETE_NOTE', payload: noteInfo})
+    dispatch({ type: 'DELETE_NOTE', payload: noteInfo })
   }
 
   const handleNoteChange = (event) => {
@@ -54,7 +54,7 @@ function DogDetails() {
   }
 
   const saveNote = () => {
-    dispatch({type: 'ADD_NOTE', payload: {newNote, id}});
+    dispatch({ type: 'ADD_NOTE', payload: { newNote, id } });
     // console.log('new note!', newNote);
     setButtonShow(!buttonShow);
     setNewNoteMode(!newNoteMode);
@@ -62,57 +62,100 @@ function DogDetails() {
 
   return (
     <div className='container'>
-      <h2>Dog Details</h2>
       {details.length > 0 ?
         <div>
-          <Grid container justifyContent="center">
+          <Grid container sx={{ alignItems: 'center', justifyContent: 'center' }} >
 
-            <Grid item xs={6}>
-              <p>Dog Name: {details[0].dog_name}</p>
+            <Grid item xs={1} >
+              Dog Name:
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Dog Gender: {details[0].gender}</p>
+            <Grid item xs={5}>
+              <p>{details[0].dog_name}</p>
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Age: {details[0].age}</p>
+            <Grid item xs={1} >
+              Dog Gender:
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Breed: {details[0].breed}</p>
+            <Grid item xs={5}>
+              <p>{details[0].gender}</p>
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Address: {details[0].address}</p>
+            <Grid item xs={1} >
+              Age:
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Origin: {details[0].type}</p>
+            <Grid item xs={5}>
+              <p>{details[0].age}</p>
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Owner Name: {details[0].owner_name}</p>
+            <Grid item xs={1} >
+              Breed:
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Owner Phone 1: {details[0].owner_phone_one}</p>
+            <Grid item xs={5}>
+              <p>{details[0].breed}</p>
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Owner Email: {details[0].owner_email}</p>
+            <Grid item xs={1} >
+              Address:
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={5}>
+              <p>{details[0].address}</p>
+            </Grid>
+
+            <Grid item xs={1} >
+              Origin:
+            </Grid>
+
+            <Grid item xs={5}>
+              <p>{details[0].type}</p>
+            </Grid>
+
+            <Grid item xs={1} >
+              Owner Name:
+            </Grid>
+
+            <Grid item xs={5}>
+              <p>{details[0].owner_name}</p>
+            </Grid>
+
+            <Grid item xs={1} >
+              Owner Phone 1:
+            </Grid>
+
+            <Grid item xs={5}>
+              <p>{details[0].owner_phone_one}</p>
+            </Grid>
+
+            <Grid item xs={1} >
+              Owner Email:
+            </Grid>
+
+            <Grid item xs={5}>
+              <p>{details[0].owner_email}</p>
+            </Grid>
+
+            <Grid item xs={1} >
+              Owner Phone 2:
+            </Grid>
+
+            <Grid item xs={5}>
               {details[0].owner_phone_two > 0 ?
-                <p>Owner Phone 2: {details[0].owner_phone_two}</p>
+                <p>{details[0].owner_phone_two}</p>
                 :
-                <p>Owner Phone 2: N/A</p>
+                <p>N/A</p>
               }
             </Grid>
 
-            <Grid item xs={6}>
-              Schedule: <FormGroup row>
+            <Grid item xs={1} >
+              Schedule:
+            </Grid>
+
+            <Grid item xs={5}>
+              <FormGroup row>
                 {/* checked={monday} */}
                 <FormControlLabel label="M" control={<Checkbox checked={details[0].monday} />} labelPlacement="top" />
                 <FormControlLabel label="T" control={<Checkbox checked={details[0].tuesday} />} labelPlacement="top" />
@@ -122,16 +165,28 @@ function DogDetails() {
               </FormGroup>
             </Grid>
 
-            <Grid item xs={6}>
-              <p>Route: {details[0].name}</p>
+            <Grid item xs={1} >
+              Route:
             </Grid>
 
-            <Grid item xs={12}>
-              <p>Pick Up: {details[0].pick_up}</p>
+            <Grid item xs={5}>
+              <p>{details[0].name}</p>
             </Grid>
 
-            <Grid item xs={12}>
-              <p>Drop Off: {details[0].drop_off}</p>
+            <Grid item xs={1} >
+              Pick up:
+            </Grid>
+
+            <Grid item xs={11}>
+              <p>{details[0].pick_up}</p>
+            </Grid>
+
+            <Grid item xs={1} >
+              Drop off:
+            </Grid>
+
+            <Grid item xs={11}>
+              <p>{details[0].drop_off}</p>
             </Grid>
 
             <Grid item xs={12}>
