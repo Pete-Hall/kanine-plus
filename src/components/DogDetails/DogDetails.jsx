@@ -189,6 +189,42 @@ function DogDetails() {
               <p>{details[0].drop_off}</p>
             </Grid>
 
+
+
+            {
+              buttonShow ?
+                <Grid container>
+                  <Grid item xs={4}>
+                    <Button onClick={goBack} color="secondary">Back</Button>
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <Button onClick={addNote} color="success">Add Note</Button>
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <Button onClick={goToEdit}>Edit</Button>
+                  </Grid>
+
+                </Grid>
+                :
+                <Grid container>
+
+                  <Grid item xs={4}>
+                    <Button onClick={addNote} color="secondary">Cancel</Button>
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <Button onClick={saveNote} color="success">Save Note</Button>
+                  </Grid>
+
+                </Grid>
+            }
+
+            <Grid item xs={12}>
+              <br />
+            </Grid>
+
             <Grid item xs={12}>
               {
                 newNoteMode ?
@@ -221,39 +257,9 @@ function DogDetails() {
               }
             </Grid>
 
-          </Grid>
-
-          <Grid container>
-
-            {
-              buttonShow ?
-                <Grid container>
-                  <Grid item xs={4}>
-                    <Button onClick={goBack} color="secondary">Back</Button>
-                  </Grid>
-
-                  <Grid item xs={4}>
-                    <Button onClick={addNote} color="success">Add Note</Button>
-                  </Grid>
-
-                  <Grid item xs={4}>
-                    <Button onClick={goToEdit}>Edit</Button>
-                  </Grid>
-
-                </Grid>
-                :
-                <Grid container>
-
-                  <Grid item xs={4}>
-                    <Button onClick={addNote} color="secondary">Cancel</Button>
-                  </Grid>
-
-                  <Grid item xs={4}>
-                    <Button onClick={saveNote} color="success">Save Note</Button>
-                  </Grid>
-
-                </Grid>
-            }
+            <Grid item xs={12}>
+              <br />
+            </Grid>
 
           </Grid>
 
