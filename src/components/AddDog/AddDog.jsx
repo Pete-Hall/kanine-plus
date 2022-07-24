@@ -75,7 +75,7 @@ function AddDog() {
   const handleDogAddress = (e) => {
     setAddress(e.target.value);
   };
-  
+
   const handleDogAge = (e) => {
     setDogAge(e.target.value);
   };
@@ -87,7 +87,7 @@ function AddDog() {
   const handleDogGender = (e) => {
     setDogGender(e.target.value);
   }
-  
+
   const handleDogName = (e) => {
     setDogName(e.target.value);
   };
@@ -146,7 +146,7 @@ function AddDog() {
       gender: dogGender
     };
     console.log(newDog);
-    dispatch({type: 'ADD_DOG', payload: newDog});
+    dispatch({ type: 'ADD_DOG', payload: newDog });
     clearInputs();
   }
 
@@ -155,56 +155,56 @@ function AddDog() {
       <Grid container sx={{ alignItems: 'center' }}>
 
         <Grid item xs={1} >
-          Dog Name: 
+          <h4>Dog Name:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleDogName} label="Dog"/>
+          <TextField onChange={handleDogName} label="Dog" />
         </Grid>
-        
+
         <Grid item xs={1} >
-          Gender: 
+          <h4>Dog Gender:</h4>
         </Grid>
 
         <Grid item xs={5}>
           <RadioGroup row>
-            <FormControlLabel value={'Male'} control={<Radio onChange={handleDogGender}/>} label={'Male'} />
-            <FormControlLabel value={'Female'} control={<Radio onChange={handleDogGender}/>} label={'Female'} />
+            <FormControlLabel value={'Male'} control={<Radio onChange={handleDogGender} />} label={'Male'} />
+            <FormControlLabel value={'Female'} control={<Radio onChange={handleDogGender} />} label={'Female'} />
           </RadioGroup>
         </Grid>
 
         <Grid item xs={1} >
-          Age: 
+          <h4>Age:</h4>
         </Grid>
 
         <Grid item xs={5}>
           {/* Age: <TextField onChange={handleDogAge} label="Age" type="number"/> */}
           <RadioGroup row>
-            <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge}/>} label={'Puppy'} />
-            <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge}/>} label={'Young Adult'} />
-            <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge}/>} label={'Mature Adult'} />
-            <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge}/>} label={'Senior Citizen'} />
+            <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} />} label={'Puppy'} />
+            <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} />} label={'Young Adult'} />
+            <FormControlLabel value={'Mature Adult'} control={<Radio onChange={handleDogAge} />} label={'Mature Adult'} />
+            <FormControlLabel value={'Senior Citizen'} control={<Radio onChange={handleDogAge} />} label={'Senior Citizen'} />
           </RadioGroup>
         </Grid>
 
         <Grid item xs={1} >
-          Breed: 
+          <h4>Breed:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleDogBreed} label="Breed"/>
+          <TextField onChange={handleDogBreed} label="Breed" />
         </Grid>
 
         <Grid item xs={1} >
-          Address: 
+          <h4>Address:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleDogAddress} label="Address"/>
+          <TextField onChange={handleDogAddress} label="Address" />
         </Grid>
 
         <Grid item xs={1} >
-          Origin: 
+          <h4>Origin:</h4>
         </Grid>
 
         <Grid item xs={5}>
@@ -217,39 +217,39 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={1} >
-          Owner Name: 
+          <h4>Owner Name:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerName} label="Owner"/>
+          <TextField onChange={handleOwnerName} label="Owner" />
         </Grid>
 
         <Grid item xs={1} >
-          Owner Phone 1: 
+          <h4>Phone 1:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerPhone1} label="Phone (primary)"/>
+          <TextField onChange={handleOwnerPhone1} label="Phone (primary)" />
         </Grid>
 
         <Grid item xs={1} >
-          Owner Email: 
+          <h4>Email:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerEmail} label="Email"/>
+          <TextField onChange={handleOwnerEmail} label="Email" />
         </Grid>
 
         <Grid item xs={1} >
-          Owner Phone 2: 
+          <h4>Phone 2:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerPhone2} label="Phone (secondary)"/>
+          <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" />
         </Grid>
 
         <Grid item xs={1} >
-          Schedule: 
+          <h4>Schedule:</h4>
         </Grid>
 
         <Grid item xs={5}>
@@ -264,7 +264,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={1} >
-          Route: 
+          <h4>Route:</h4>
         </Grid>
 
         <Grid item xs={5}>
@@ -277,19 +277,19 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={1} >
-          Pick up: 
+          <h4>Pick up:</h4>
         </Grid>
 
         <Grid item xs={11}>
-          <TextField onChange={handlePickup} label="Pick Up Instructions"/>
+          <TextField onChange={handlePickup} label="Pick Up Instructions" />
         </Grid>
 
         <Grid item xs={1} >
-          Drop off: 
+          <h4>Drop off:</h4>
         </Grid>
 
         <Grid item xs={11}>
-          <TextField onChange={handleDropoff} label="Drop Off Instructions"/>
+          <TextField onChange={handleDropoff} label="Drop Off Instructions" />
         </Grid>
 
         <Grid item xs={6}>

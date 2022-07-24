@@ -67,7 +67,7 @@ function DogDetails() {
           <Grid container sx={{ alignItems: 'center', justifyContent: 'center' }} >
 
             <Grid item xs={1} >
-              Dog Name:
+              <h4>Dog Name:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -75,7 +75,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Dog Gender:
+              <h4>Dog Gender:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -83,7 +83,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Age:
+              <h4>Age:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -91,7 +91,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Breed:
+             <h4>Breed:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -99,7 +99,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Address:
+              <h4>Address:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -107,7 +107,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Origin:
+              <h4>Origin:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -115,7 +115,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Owner Name:
+              <h4>Owner Name:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -123,7 +123,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Owner Phone 1:
+              <h4>Phone 1:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -131,7 +131,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Owner Email:
+              <h4>Email:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -139,7 +139,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Owner Phone 2:
+              <h4>Phone 2:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -151,7 +151,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Schedule:
+              <h4>Schedule:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -166,7 +166,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Route:
+              <h4>Route:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -174,7 +174,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Pick up:
+              <h4>Pick up:</h4>
             </Grid>
 
             <Grid item xs={11}>
@@ -182,7 +182,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-              Drop off:
+              <h4>Drop off:</h4>
             </Grid>
 
             <Grid item xs={11}>
