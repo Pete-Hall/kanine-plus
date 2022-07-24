@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
@@ -57,7 +58,8 @@ function LoginForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <Button type="submit" name="submit">Log In</Button>
+        {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
       </div>
     </form>
   );

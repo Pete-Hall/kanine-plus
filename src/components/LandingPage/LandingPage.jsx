@@ -4,6 +4,7 @@ import './LandingPage.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
+import { Button } from '@mui/material';
 
 function LandingPage() {
   const [heading, setHeading] = useState('Welcome');
@@ -56,9 +57,10 @@ function LandingPage() {
 
           <center>
             <h4>Already a Member?</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
+            <Button onClick={onLogin}>Login</Button>
+            {/* <button className="btn btn_sizeSm" onClick={onLogin}>
               Login
-            </button>
+            </button> */}
           </center>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -52,7 +53,8 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <Button type="submit" name="submit">Register</Button>
+        {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
       </div>
     </form>
   );
