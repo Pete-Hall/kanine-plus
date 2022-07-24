@@ -55,9 +55,9 @@ function App() {
           variant: 'outlined',
           size: 'small',
           margin: 'normal',
-          // multiline: 'true'
-        }
-      }
+          multiline: true,
+        },
+      },
     },
   })
 

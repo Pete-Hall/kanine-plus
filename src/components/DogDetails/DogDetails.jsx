@@ -143,7 +143,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={5}>
-              {details[0].owner_phone_two > 0 ?
+              {details[0].owner_phone_two.length > 0 ?
                 <p>{details[0].owner_phone_two}</p>
                 :
                 <p>N/A</p>

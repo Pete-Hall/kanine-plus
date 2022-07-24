@@ -36,8 +36,8 @@ CREATE TABLE "dog" (
 	"friday" BOOLEAN,
 	"owner_name" VARCHAR (255),
 	"owner_email" VARCHAR (255),
-	"owner_phone_one" BIGINT,
-	"owner_phone_two" BIGINT,
+	"owner_phone_one" VARCHAR (255),
+	"owner_phone_two" VARCHAR (255),
 	"pick_up" VARCHAR (1000),
 	"drop_off" VARCHAR (1000)
 );
@@ -73,11 +73,6 @@ ALTER TABLE "public"."note"
 ALTER TABLE "public"."note"
   ADD COLUMN "userID" integer,
   ADD FOREIGN KEY ("userID") REFERENCES "public"."user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
---- ONLY RUN IF BIGINT in the dog table doesn't work
-ALTER TABLE "public"."dog"
-  ALTER COLUMN "owner_phone_one" TYPE bigint,
-  ALTER COLUMN "owner_phone_two" TYPE bigint;
 
 -- Add in a sample dog to have some data starting out
 INSERT INTO dog ("dog_name", "address", "breed", "age", "monday", "tuesday", "wednesday", "thursday", "friday", "owner_name", "owner_email", "owner_phone_one", "owner_phone_two", "pick_up", "drop_off", "originID", "driving_routeID") VALUES ('Tillie', '2809 E Minnehaha Pkwy, #208, Minneapolis, MN 55417', 'English Cocker Spaniel', 10, true, false, true, false, true, 'Pete Hall', 'pete.mack.hall@gmail.com', 8159780519, 8158778813, 'Front door. Key. Call for Tillie.', 'Front door. Loose in house is OK.', 2, 5);

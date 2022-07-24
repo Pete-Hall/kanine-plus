@@ -37,12 +37,12 @@ function EditDog() {
   const [dogGender, setDogGender] = useState('');
   const [dogName, setDogName] = useState('');
   const [dogOrigin, setDogOrigin] = useState(0);
-  const [dogRoute, setDogRoute] = useState('');
+  const [dogRoute, setDogRoute] = useState(6);
   const [dropoff, setDropoff] = useState('');
   const [ownerEmail, setOwnerEmail] = useState('');
   const [ownerName, setOwnerName] = useState('');
-  const [ownerPhone1, setOwnerPhone1] = useState(0);
-  const [ownerPhone2, setOwnerPhone2] = useState(0);
+  const [ownerPhone1, setOwnerPhone1] = useState('');
+  const [ownerPhone2, setOwnerPhone2] = useState('');
   const [pickup, setPickup] = useState('');
 
   /* When a day variable is changed, console.log the current value of each day */
@@ -270,7 +270,7 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={5}>
-              <TextField onChange={handleOwnerPhone1} label="Phone (primary)" type="number" defaultValue={details[0].owner_phone_one} />
+              <TextField onChange={handleOwnerPhone1} label="Phone (primary)" defaultValue={details[0].owner_phone_one} />
             </Grid>
 
             <Grid item xs={1} >
@@ -286,7 +286,7 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={5}>
-              <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" type="number" defaultValue={details[0].owner_phone_two} />
+              <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" defaultValue={details[0].owner_phone_two} />
             </Grid>
 
             <Grid item xs={1} >
