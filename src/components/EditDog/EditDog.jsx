@@ -77,8 +77,14 @@ function EditDog() {
 
   const deleteDog = () => {
     console.log('delete dog:', details[0].id);
-    dispatch({ type: 'DELETE_DOG', payload: details[0].id });
-    history.push('/list');
+    if(confirm(`Are you sure you want to delete ${details[0].dog_name} and all of their data? This action cannot be undone`)) {
+      alert(`You have successfully removed ${details[0].dog_name}.`);
+      dispatch({ type: 'DELETE_DOG', payload: details[0].id });
+      history.push('/list');
+    } else {
+      alert(`Nothing has been deleted for ${details[0].dog_name}`);
+    }
+
   }
 
   const goBack = () => {

@@ -32,7 +32,7 @@ function AddDog() {
   const [dogBreed, setDogBreed] = useState('');
   const [dogGender, setDogGender] = useState('');
   const [dogName, setDogName] = useState('');
-  const [dogOrigin, setDogOrigin] = useState(0);
+  const [dogOrigin, setDogOrigin] = useState(3);
   const [dogRoute, setDogRoute] = useState(6);
   const [dropoff, setDropoff] = useState('');
   const [ownerEmail, setOwnerEmail] = useState('');
