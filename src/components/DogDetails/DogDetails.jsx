@@ -64,7 +64,8 @@ function DogDetails() {
     <div className='container'>
       {details.length > 0 ?
         <div>
-          <Grid container sx={{ alignItems: 'center', justifyContent: 'center' }} >
+          {/* justifyContent: 'center'  */}
+          <Grid container sx={{ alignItems: 'center', }} >
 
             <Grid item xs={1} >
               <h4>Dog Name:</h4>
@@ -189,8 +190,6 @@ function DogDetails() {
               <p>{details[0].drop_off}</p>
             </Grid>
 
-
-
             {
               buttonShow ?
                 <Grid container>
@@ -228,21 +227,21 @@ function DogDetails() {
             <Grid item xs={12}>
               {
                 newNoteMode ?
-                  (<div><TextField onChange={handleNoteChange} label="New Note" fullWidth />
+                  (<div><TextField onChange={handleNoteChange} label="New Note" sx={{width:'50%'}}/>
                   </div>)
                   // TODO: make this a card with a text field in it to match the card layout of displayed notes?
                   :
                   (<div></div>)
               }
             </Grid>
-
-            <Grid item xs={8}>
+   
+            <Grid item xs={6}>
               {/* conditional rendering, map through the notes */}
               {notes.length > 0 ?
                 <Box>
                   {notes.map((note) => (
-                    <Card key={note.id} variant="outlined">
-                      <CardHeader title={note.username + ':'} />
+                    <Card key={note.id} variant="outlined" style={{backgroundColor: '#D9D9D9'}}>
+                      <CardHeader title={note.username + ':'}/>
                       <CardContent>
                         <p>{note.content}</p>
                       </CardContent>

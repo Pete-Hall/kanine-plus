@@ -119,3 +119,7 @@ MUI root overrides
 .MuiTextField-root {
   width: 75%
 }
+
+.MuiCard-root {
+  margin-bottom: 10px;
+}
