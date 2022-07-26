@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio, Button, Snackbar, } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio, Button, Snackbar, Alert, } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -21,6 +21,7 @@ function AddDog() {
     dispatch({ type: 'GET_ROUTES' });
   }, []);
 
+  /* For the snackbar, if adding a dog was a success, fire off the snackbar flow */
   useEffect(() => {
     if(addAlert === true) {
       setOpen(true);
@@ -137,7 +138,9 @@ function AddDog() {
     if(reason === 'clickaway') {
       return;
     }
+    // this flow to reset the state seems messy
     setOpen(false);
+    dispatch({type: 'ADD_ALERT', payload: false});
   }
 
   const sendDog = () => {
@@ -170,11 +173,15 @@ function AddDog() {
     <div className='container'>
       <Snackbar
         open={open}
-        autoHideDuration={6000}
-        message="Dog Added"
+        autoHideDuration={2000}
+        // message="Dog Added"
         onClose={handleSnackbarClose}
         anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
-      />
+      >
+        <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
+        You added a dog
+        </Alert>
+      </Snackbar>
       <Grid container sx={{ alignItems: 'center' }}>
 
         <Grid item xs={1} >
