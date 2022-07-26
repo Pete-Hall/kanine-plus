@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio, Button, } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, TextField, Grid, RadioGroup, Radio, Button, Snackbar, } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -13,12 +13,19 @@ function AddDog() {
   /* Reducers */
   const origins = useSelector((store) => store.origins);
   const routes = useSelector((store) => store.routes);
+  const addAlert = useSelector((store) => store.addAlert);
 
   /* Send dispatches to start SAGAs */
   useEffect(() => {
     dispatch({ type: 'GET_ORIGINS' });
     dispatch({ type: 'GET_ROUTES' });
   }, []);
+
+  useEffect(() => {
+    if(addAlert === true) {
+      setOpen(true);
+    }
+  }, [addAlert])
 
   /* Hooks */
   const [monday, setMonday] = useState(false);
@@ -40,6 +47,8 @@ function AddDog() {
   const [ownerPhone1, setOwnerPhone1] = useState('');
   const [ownerPhone2, setOwnerPhone2] = useState('');
   const [pickup, setPickup] = useState('');
+
+  const [open, setOpen] = useState(false);
 
   /* When a day variable is changed, console.log the current value of each day */
   useEffect(() => {
@@ -124,6 +133,13 @@ function AddDog() {
     setPickup(e.target.value);
   };
 
+  const handleSnackbarClose = (event, reason) => {
+    if(reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  }
+
   const sendDog = () => {
     let newDog = {
       dog_name: dogName,
@@ -152,6 +168,13 @@ function AddDog() {
 
   return (
     <div className='container'>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        message="Dog Added"
+        onClose={handleSnackbarClose}
+        anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
+      />
       <Grid container sx={{ alignItems: 'center' }}>
 
         <Grid item xs={1} >

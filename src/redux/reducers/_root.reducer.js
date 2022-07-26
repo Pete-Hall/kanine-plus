@@ -6,6 +6,7 @@ import routes from './route.reducer';
 import dogs from './dog.reducer';
 import details from './details.reducer';
 import notes from './notes.reducer';
+import addAlert from './addAlert.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   dogs, // TYPE: 'SET_DOGS'
   details, // TYPE: 'SET_DETAILS'
   notes, // TYPE: 'SET_NOTES'
+  addAlert, // TYPE: 'ADD_ALERT'
 });
 
 export default rootReducer;

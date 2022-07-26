@@ -6,7 +6,7 @@ function* addDog(action) {
   try {
     const response = yield axios.post('/api/add', action.payload);
     console.log('add dog response from saga:', response);
-    // yield put({type: 'SEND_DOG', payload: routes.data})
+    yield put({type: 'ADD_ALERT', payload: true}); 
   } catch (err) {
     console.log('Error adding dog to DB:', err);
     alert('Error adding dog from DB')
