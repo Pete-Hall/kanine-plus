@@ -123,3 +123,7 @@ MUI root overrides
 .MuiCard-root {
   margin-bottom: 10px;
 }
+
+.instructions {
+  width: 34%
+}

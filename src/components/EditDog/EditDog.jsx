@@ -328,7 +328,7 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={11}>
-              <TextField onChange={handlePickup} label="Pick Up Instructions" defaultValue={details[0].pick_up} />
+              <TextField onChange={handlePickup} label="Pick Up Instructions" defaultValue={details[0].pick_up} className="instructions"/>
             </Grid>
 
             <Grid item xs={1} >
@@ -336,7 +336,7 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={11}>
-              <TextField onChange={handleDropoff} label="Drop Off Instructions" defaultValue={details[0].drop_off} />
+              <TextField onChange={handleDropoff} label="Drop Off Instructions" defaultValue={details[0].drop_off} className="instructions"/>
             </Grid>
 
             <Grid item xs={4}>

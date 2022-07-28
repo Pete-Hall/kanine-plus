@@ -311,7 +311,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={11}>
-          <TextField onChange={handlePickup} label="Pick Up Instructions" />
+          <TextField onChange={handlePickup} label="Pick Up Instructions" className="instructions"/>
         </Grid>
 
         <Grid item xs={1} >
@@ -319,7 +319,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={11}>
-          <TextField onChange={handleDropoff} label="Drop Off Instructions" />
+          <TextField onChange={handleDropoff} label="Drop Off Instructions" className="instructions"/>
         </Grid>
 
         <Grid item xs={6}>
