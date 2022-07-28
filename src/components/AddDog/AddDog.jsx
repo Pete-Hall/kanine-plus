@@ -82,6 +82,18 @@ function AddDog() {
   };
   /*///////////////////////////////////////*/
 
+  const handleAutoFill = () => {
+    setAddress('5783 Xerxes Ave E, Minneapolis, MN, 55410');
+    setDogBreed('Golden Doodle');
+    setDogName('Rosie');
+    setDropoff('Back door off the porch. Key. In crate');
+    setOwnerEmail('drdolittle@gmail.com');
+    setOwnerName('Dr. Dolittle');
+    setOwnerPhone1('651-123-4567');
+    setOwnerPhone2('651-098-7654');
+    setPickup('Back door off the porch. Key. Put back in crate');
+  }
+
   const handleDogAddress = (e) => {
     setAddress(e.target.value);
   };
@@ -185,11 +197,11 @@ function AddDog() {
       <Grid container sx={{ alignItems: 'center' }}>
 
         <Grid item xs={1} >
-          <h4>Dog Name:</h4>
+          <h4 onClick={handleAutoFill}>Dog Name:</h4>
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleDogName} label="Dog" />
+          <TextField onChange={handleDogName} label="Dog" value={dogName}/>
         </Grid>
 
         <Grid item xs={1} >
@@ -222,7 +234,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleDogBreed} label="Breed" />
+          <TextField onChange={handleDogBreed} label="Breed" value={dogBreed}/>
         </Grid>
 
         <Grid item xs={1} >
@@ -230,7 +242,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleDogAddress} label="Address" />
+          <TextField onChange={handleDogAddress} label="Address" value={address} />
         </Grid>
 
         <Grid item xs={1} >
@@ -251,7 +263,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerName} label="Owner" />
+          <TextField onChange={handleOwnerName} label="Owner" value={ownerName}/>
         </Grid>
 
         <Grid item xs={1} >
@@ -259,7 +271,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerPhone1} label="Phone (primary)" />
+          <TextField onChange={handleOwnerPhone1} label="Phone (primary)" value={ownerPhone1}/>
         </Grid>
 
         <Grid item xs={1} >
@@ -267,7 +279,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerEmail} label="Email" />
+          <TextField onChange={handleOwnerEmail} label="Email" value={ownerEmail}/>
         </Grid>
 
         <Grid item xs={1} >
@@ -275,7 +287,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={5}>
-          <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" />
+          <TextField onChange={handleOwnerPhone2} label="Phone (secondary)" value={ownerPhone2}/>
         </Grid>
 
         <Grid item xs={1} >
@@ -311,7 +323,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={11}>
-          <TextField onChange={handlePickup} label="Pick Up Instructions" className="instructions"/>
+          <TextField onChange={handlePickup} label="Pick Up Instructions" className="instructions" value={pickup}/>
         </Grid>
 
         <Grid item xs={1} >
@@ -319,7 +331,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={11}>
-          <TextField onChange={handleDropoff} label="Drop Off Instructions" className="instructions"/>
+          <TextField onChange={handleDropoff} label="Drop Off Instructions" className="instructions" value={dropoff}/>
         </Grid>
 
         <Grid item xs={6}>
