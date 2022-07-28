@@ -91,7 +91,7 @@ function DogList(props) {
               rows={dogs}
             />
             :
-            <p>Loading...</p>
+            <p>Any dogs you have will appear here</p>
         }
       </Grid>
     </div>
