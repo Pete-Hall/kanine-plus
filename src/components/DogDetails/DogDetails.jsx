@@ -54,7 +54,9 @@ function DogDetails() {
   }
 
   const saveNote = () => {
-    dispatch({ type: 'ADD_NOTE', payload: { newNote, id } });
+    if(newNote != '') {
+      dispatch({ type: 'ADD_NOTE', payload: { newNote, id } });
+    } 
     // console.log('new note!', newNote);
     setButtonShow(!buttonShow);
     setNewNoteMode(!newNoteMode);
