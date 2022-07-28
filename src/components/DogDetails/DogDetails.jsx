@@ -54,8 +54,11 @@ function DogDetails() {
   }
 
   const saveNote = () => {
+    let date = new Date();
+    let readableDate = date.toLocaleString();
+    console.log(readableDate); // https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
     if(newNote != '') {
-      dispatch({ type: 'ADD_NOTE', payload: { newNote, id } });
+      dispatch({ type: 'ADD_NOTE', payload: { newNote, id, readableDate } });
     } 
     // console.log('new note!', newNote);
     setButtonShow(!buttonShow);

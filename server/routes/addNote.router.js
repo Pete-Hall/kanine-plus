@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   console.log(req.body);
   // console.log(req.user.id);
-  const queryString = `INSERT INTO note ("dogID", "userID", "content") VALUES ($1, $2, $3);`
-  const values = [req.body.id, req.user.id, req.body.newNote];
+  const queryString = `INSERT INTO note ("dogID", "userID", "content", "date") VALUES ($1, $2, $3, $4);`
+  const values = [req.body.id, req.user.id, req.body.newNote, req.body.readableDate];
   pool.query(queryString, values).then((result) => {
     res.sendStatus(201);
   }).catch((err) => {
