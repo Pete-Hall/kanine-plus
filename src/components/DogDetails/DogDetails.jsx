@@ -246,7 +246,7 @@ function DogDetails() {
                 <Box>
                   {notes.map((note) => (
                     <Card key={note.id} variant="outlined" style={{backgroundColor: '#D9D9D9'}}>
-                      <CardHeader title={note.username + ':'}/>
+                      <CardHeader title={note.username + ':'} subheader={note.date}/>
                       <CardContent>
                         <p>{note.content}</p>
                       </CardContent>
