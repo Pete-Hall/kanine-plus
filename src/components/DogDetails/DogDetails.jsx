@@ -57,9 +57,9 @@ function DogDetails() {
     let date = new Date();
     let readableDate = date.toLocaleString();
     console.log(readableDate); // https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-    if(newNote != '') {
+    if (newNote != '') {
       dispatch({ type: 'ADD_NOTE', payload: { newNote, id, readableDate } });
-    } 
+    }
     // console.log('new note!', newNote);
     setButtonShow(!buttonShow);
     setNewNoteMode(!newNoteMode);
@@ -71,6 +71,10 @@ function DogDetails() {
         <div>
           {/* justifyContent: 'center'  */}
           <Grid container sx={{ alignItems: 'center', }} >
+
+            <Grid item xs={12}>
+              <img src={details[0].image} />
+            </Grid>
 
             <Grid item xs={1} >
               <h4>Dog Name:</h4>
@@ -97,7 +101,7 @@ function DogDetails() {
             </Grid>
 
             <Grid item xs={1} >
-             <h4>Breed:</h4>
+              <h4>Breed:</h4>
             </Grid>
 
             <Grid item xs={5}>
@@ -232,21 +236,21 @@ function DogDetails() {
             <Grid item xs={12}>
               {
                 newNoteMode ?
-                  (<div><TextField onChange={handleNoteChange} label="New Note" sx={{width:'50%'}}/>
+                  (<div><TextField onChange={handleNoteChange} label="New Note" sx={{ width: '50%' }} />
                   </div>)
                   // TODO: make this a card with a text field in it to match the card layout of displayed notes?
                   :
                   (<div></div>)
               }
             </Grid>
-   
+
             <Grid item xs={6}>
               {/* conditional rendering, map through the notes */}
               {notes.length > 0 ?
                 <Box>
                   {notes.map((note) => (
-                    <Card key={note.id} variant="outlined" style={{backgroundColor: '#D9D9D9'}}>
-                      <CardHeader title={note.username + ':'} subheader={note.date}/>
+                    <Card key={note.id} variant="outlined" style={{ backgroundColor: '#D9D9D9' }}>
+                      <CardHeader title={note.username + ':'} subheader={note.date} />
                       <CardContent>
                         <p>{note.content}</p>
                       </CardContent>
