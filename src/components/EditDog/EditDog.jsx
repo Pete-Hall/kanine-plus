@@ -77,7 +77,7 @@ function EditDog() {
 
   const deleteDog = () => {
     console.log('delete dog:', details[0].id);
-    if(confirm(`Are you sure you want to delete ${details[0].dog_name} and all of their data? This action cannot be undone`)) {
+    if (confirm(`Are you sure you want to delete ${details[0].dog_name} and all of their data? This action cannot be undone`)) {
       alert(`You have successfully removed ${details[0].dog_name}.`);
       dispatch({ type: 'DELETE_DOG', payload: details[0].id });
       history.push('/list');
@@ -200,6 +200,10 @@ function EditDog() {
       {
         details.length > 0 ?
           <Grid container sx={{ alignItems: 'center' }}>
+
+            <Grid item xs={12}>
+              <img src={details[0].image} />
+            </Grid>
 
             <Grid item xs={1} >
               <h4>Dog Name:</h4>
@@ -328,7 +332,7 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={11}>
-              <TextField onChange={handlePickup} label="Pick Up Instructions" defaultValue={details[0].pick_up} className="instructions"/>
+              <TextField onChange={handlePickup} label="Pick Up Instructions" defaultValue={details[0].pick_up} className="instructions" />
             </Grid>
 
             <Grid item xs={1} >
@@ -336,7 +340,7 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={11}>
-              <TextField onChange={handleDropoff} label="Drop Off Instructions" defaultValue={details[0].drop_off} className="instructions"/>
+              <TextField onChange={handleDropoff} label="Drop Off Instructions" defaultValue={details[0].drop_off} className="instructions" />
             </Grid>
 
             <Grid item xs={4}>
