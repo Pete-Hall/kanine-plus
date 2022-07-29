@@ -7,6 +7,7 @@ import dogs from './dog.reducer';
 import details from './details.reducer';
 import notes from './notes.reducer';
 import addAlert from './addAlert.reducer';
+import image from './image.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   details, // TYPE: 'SET_DETAILS'
   notes, // TYPE: 'SET_NOTES'
   addAlert, // TYPE: 'ADD_ALERT'
+  image, // TYPE: 'SET_IMAGE'
 });
 
 export default rootReducer;

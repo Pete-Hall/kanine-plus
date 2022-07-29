@@ -14,6 +14,7 @@ function AddDog() {
   const origins = useSelector((store) => store.origins);
   const routes = useSelector((store) => store.routes);
   const addAlert = useSelector((store) => store.addAlert);
+  let cloudImage = useSelector(store => store.image);
 
   /* Send dispatches to start SAGAs */
   useEffect(() => {
@@ -27,6 +28,13 @@ function AddDog() {
       setOpen(true);
     }
   }, [addAlert])
+
+  /* Set the image source as the image from the reducer once it's filled with the image data */
+  useEffect(() => {
+    if(cloudImage.length > 0) {
+      setImageToShow(cloudImage)
+    };
+  }, [cloudImage])
 
   /* Hooks */
   const [monday, setMonday] = useState(false);
@@ -51,6 +59,9 @@ function AddDog() {
 
   const [open, setOpen] = useState(false);
 
+  const [imageSelected, setImageSelected] = useState('');
+  const [imageToShow, setImageToShow] = useState('')
+
   /* When a day variable is changed, console.log the current value of each day */
   useEffect(() => {
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
@@ -58,6 +69,7 @@ function AddDog() {
 
   const clearInputs = () => {
     history.push('/add');
+    dispatch({type: 'CLEAR_IMAGE'});
   };
 
   /* ///// Event handler's for Schedule ///// */
@@ -126,6 +138,11 @@ function AddDog() {
     setDropoff(e.target.value);
   };
 
+  const handleImage = (event) => {
+    setImageSelected(event.target.files[0]);
+    console.log(event.target.files[0]);
+  }
+
   const handleOwnerEmail = (e) => {
     setOwnerEmail(e.target.value);
   };
@@ -181,6 +198,14 @@ function AddDog() {
     clearInputs();
   }
 
+  const uploadImage = () => {
+    console.log(imageSelected);
+    let imageToSend = new FormData();
+    imageToSend.append('file', imageSelected);
+    console.log(imageToSend);
+    dispatch({type: 'SEND_IMAGE', payload: imageToSend});
+  }
+
   return (
     <div className='container'>
       <Snackbar
@@ -195,6 +220,15 @@ function AddDog() {
         </Alert>
       </Snackbar>
       <Grid container sx={{ alignItems: 'center' }}>
+
+        <Grid item xs={12}>
+          <img src={imageToShow}/>
+        </Grid>
+
+        <Grid item xs={12}>
+          <input onChange={handleImage} type="file" accept="image/*"/>
+          <Button onClick={uploadImage}>Upload</Button>
+        </Grid>
 
         <Grid item xs={1} >
           <h4 onClick={handleAutoFill}>Dog Name:</h4>

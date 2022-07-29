@@ -19,6 +19,7 @@ const notesRouter = require('./routes/notes.router');
 const addNoteRouter = require('./routes/addNote.router');
 const deleteNoteRouter = require('./routes/deleteNote.router');
 const deleteDogRouter = require('./routes/deleteDog.router');
+const uploadImageRouter = require('./routes/uploadImage.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -43,6 +44,7 @@ app.use('/api/notes', notesRouter);
 app.use('/api/addNote', addNoteRouter);
 app.use('/api/deleteNote', deleteNoteRouter);
 app.use('/api/deleteDog', deleteDogRouter);
+app.use('/api/uploadImage', uploadImageRouter);
 
 // Serve static files
 app.use(express.static('build'));
