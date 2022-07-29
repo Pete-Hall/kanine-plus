@@ -348,7 +348,7 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={4}>
-              <Button onClick={sendDog}>Save</Button>
+              <Button onClick={sendDog} color="success">Save</Button>
             </Grid>
 
           </Grid>

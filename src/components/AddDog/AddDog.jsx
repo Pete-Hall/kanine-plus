@@ -140,7 +140,6 @@ function AddDog() {
 
   const handleImage = (event) => {
     setImageSelected(event.target.files[0]);
-    console.log(event.target.files[0]);
   }
 
   const handleOwnerEmail = (e) => {
@@ -191,7 +190,8 @@ function AddDog() {
       drop_off: dropoff,
       originID: dogOrigin,
       driving_routeID: dogRoute,
-      gender: dogGender
+      gender: dogGender,
+      image: imageToShow,
     };
     console.log(newDog);
     dispatch({ type: 'ADD_DOG', payload: newDog });
@@ -373,7 +373,7 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={6}>
-          <Button onClick={sendDog}>Save</Button>
+          <Button onClick={sendDog} color="success">Save</Button>
         </Grid>
 
       </Grid>
