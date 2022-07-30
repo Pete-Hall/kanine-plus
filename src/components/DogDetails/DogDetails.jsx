@@ -273,7 +273,7 @@ function DogDetails() {
 
         </div>
         :
-        <p>Loading...</p>
+        <p>404 - no dog found</p>
       }
 
     </div>
