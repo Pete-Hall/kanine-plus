@@ -75,5 +75,5 @@ ALTER TABLE "public"."note"
   ADD FOREIGN KEY ("userID") REFERENCES "public"."user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- Add in a sample dog to have some data starting out
-INSERT INTO dog ("dog_name", "address", "breed", "age", "monday", "tuesday", "wednesday", "thursday", "friday", "owner_name", "owner_email", "owner_phone_one", "owner_phone_two", "pick_up", "drop_off", "originID", "driving_routeID") VALUES ('Tillie', '2809 E Minnehaha Pkwy, #208, Minneapolis, MN 55417', 'English Cocker Spaniel', 10, true, false, true, false, true, 'Pete Hall', 'pete.mack.hall@gmail.com', 8159780519, 8158778813, 'Front door. Key. Call for Tillie.', 'Front door. Loose in house is OK.', 2, 5);
+INSERT INTO dog ("dog_name", "address", "breed", "age", "monday", "tuesday", "wednesday", "thursday", "friday", "owner_name", "owner_email", "owner_phone_one", "owner_phone_two", "pick_up", "drop_off", "originID", "driving_routeID") VALUES ('Tillie', '2809 W Minnehaha Pkwy, #200, Minneapolis, MN 55417', 'English Cocker Spaniel', 10, true, false, true, false, true, 'Pete Hall', 'pete.mack.hall@gmail.com', 815-123-4567, 815-098-8765, 'Front door. Key. Call for Tillie.', 'Front door. Loose in house is OK.', 2, 5);
 
