@@ -64,6 +64,7 @@ function DogDetails() {
     // console.log('new note!', newNote);
     setButtonShow(!buttonShow);
     setNewNoteMode(!newNoteMode);
+    setNewNote('');
   }
 
   return (
