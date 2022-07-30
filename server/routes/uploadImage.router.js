@@ -25,7 +25,7 @@ const storage = new CloudinaryStorage({
 const upload = multer({storage: storage});
 
 router.post('/', upload.single('file'), (req, res) => {
-  console.log(req.file); // send this a reducer, then the addDog form would call that reducer and send all the info to the database
+  console.log(req.file); // send this to a reducer, then the addDog form would call that reducer and send all the info to the database
   res.send(req.file.path);
 });
 

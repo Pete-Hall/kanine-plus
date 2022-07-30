@@ -9,18 +9,19 @@ function DogList(props) {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const dogs = useSelector((store) => store.dogs);
+  
+  const dogs = useSelector((store) => store.dogs); // reducer to hold the dog data
 
   useEffect(() => {
-    dispatch({ type: 'GET_DOGS' });
+    dispatch({ type: 'GET_DOGS' }); // on page load, send a dispatch to get the dog data
   }, [])
 
-  const dogDetails = (e) => {
+  const dogDetails = (e) => { // function to go to the correct details page for the dog. we use this function below in the data grid
     console.log(e);
     history.push(`/details/${e}`)
   }
 
-  const getFullSchedule = (params) => {
+  const getFullSchedule = (params) => { // creates a schedule for each dog, taking booleans from the database and appending the correct letter for the day that dog wals. we use this function below in the data grid
     let schedule = [];
     if (params.row.monday) {
       schedule = [...schedule, 'M']
@@ -40,7 +41,7 @@ function DogList(props) {
     return schedule;
   }
 
-  const columns = [
+  const columns = [ // creates the columns for the datagrid
     // {
     //   field: 'id',
     //   headerName: 'ID',
@@ -76,6 +77,7 @@ function DogList(props) {
       headerName: 'Schedule',
       width: 90,
       flex: 1,
+      // valueGetter allows us to render each cell based on the getFullSchedule function https://mui.com/x/react-data-grid/column-definition/
       valueGetter: getFullSchedule
     },
     {
@@ -84,8 +86,9 @@ function DogList(props) {
       headerName: 'Dog Details',
       width: 150,
       flex: 1,
+      // getActions allows us to return the possible actions for that column, in this case it's a button that takes us to the dog details
       getActions: ({ id }) => { // (params) => ...dogDetails(params.id) also works. but with the Avatar column, ({image}) => src={image} does not work, not sure why
-        console.log(id);
+        // console.log(id);
         return [
           <Button onClick={() => dogDetails(id)}>Dog Details</Button> // https://mui.com/x/react-data-grid/editing/#full-featured-crud-component
         ]
@@ -102,6 +105,7 @@ function DogList(props) {
               autoHeight
               columns={columns}
               rows={dogs}
+              // for rows, we're using the data from the dogs reducer (aka all the dog data from the database)
             />
             :
             <p>Any dogs you have will appear here</p>

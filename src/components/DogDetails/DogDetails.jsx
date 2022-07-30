@@ -8,6 +8,7 @@ function DogDetails() {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  
   const details = useSelector((store) => store.details);
   const notes = useSelector((store) => store.notes);
 
@@ -19,8 +20,8 @@ function DogDetails() {
 
   useEffect(() => {
     console.log('useParams id:', id);
-    dispatch({ type: 'GET_DETAILS', payload: id });
-    dispatch({ type: 'GET_NOTES', payload: id })
+    dispatch({ type: 'GET_DETAILS', payload: id }); // send a dispatch to get the data for the specific dog 
+    dispatch({ type: 'GET_NOTES', payload: id }); // send a dispatch to get the notes for the specific dog
   }, [])
 
   useEffect(() => {
@@ -40,7 +41,7 @@ function DogDetails() {
     history.push(`/edit/${id}`)
   }
 
-  const handleDeleteNote = (specificNoteID) => {
+  const handleDeleteNote = (specificNoteID) => { // deletes the specific note for the specific dog
     console.log('in delete note:', specificNoteID)
     let noteInfo = {
       specificNoteID,
@@ -54,8 +55,8 @@ function DogDetails() {
   }
 
   const saveNote = () => {
-    let date = new Date();
-    let readableDate = date.toLocaleString();
+    let date = new Date(); // returns the current data and time
+    let readableDate = date.toLocaleString(); // turns the current date and time into a readable format to send with the new note
     console.log(readableDate); // https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
     if (newNote != '') {
       dispatch({ type: 'ADD_NOTE', payload: { newNote, id, readableDate } });
@@ -238,7 +239,6 @@ function DogDetails() {
                 newNoteMode ?
                   (<div><TextField onChange={handleNoteChange} label="New Note" sx={{ width: '50%' }} />
                   </div>)
-                  // TODO: make this a card with a text field in it to match the card layout of displayed notes?
                   :
                   (<div></div>)
               }

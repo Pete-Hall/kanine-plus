@@ -25,7 +25,7 @@ function EditDog() {
     dispatch({ type: 'GET_DETAILS', payload: id });
   }, []);
 
-  /* Set the image source as the image from the reducer once it's filled with the image data */
+  /* Set the image source as the image url from the reducer once it's filled with said image url */
   useEffect(() => {
     if(cloudImage.length > 0) {
       setImageToShow(cloudImage)
@@ -123,7 +123,7 @@ function EditDog() {
   const handleFriday = () => {
     setFriday(!friday);
   };
-  /*///////////////////////////////////////*/
+  /*/////////// end schedule /////////////////*/
 
   const handleDogAddress = (e) => {
     setAddress(e.target.value);
@@ -264,7 +264,6 @@ function EditDog() {
             </Grid>
 
             <Grid item xs={5}>
-              {/* Age: <TextField onChange={handleDogAge} label="Age" type="number" defaultValue={details[0].age}/> */}
               <RadioGroup row>
                 <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Puppy'} />} label={'Puppy'} />
                 <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} checked={dogAge === 'Young Adult'} />} label={'Young Adult'} />
@@ -340,7 +339,6 @@ function EditDog() {
 
             <Grid item xs={5}>
               <FormGroup row>
-                {/* checked={monday} */}
                 <FormControlLabel label="M" control={<Checkbox checked={monday} onChange={handleMonday} />} labelPlacement="top" />
                 <FormControlLabel label="T" control={<Checkbox checked={tuesday} onChange={handleTuesday} />} labelPlacement="top" />
                 <FormControlLabel label="W" control={<Checkbox checked={wednesday} onChange={handleWednesday} />} labelPlacement="top" />

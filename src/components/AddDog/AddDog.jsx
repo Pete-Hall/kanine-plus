@@ -216,7 +216,7 @@ function AddDog() {
         anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
       >
         <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
-        You added a dog
+        You added a dog!
         </Alert>
       </Snackbar>
       
@@ -255,7 +255,6 @@ function AddDog() {
         </Grid>
 
         <Grid item xs={5}>
-          {/* Age: <TextField onChange={handleDogAge} label="Age" type="number"/> */}
           <RadioGroup row>
             <FormControlLabel value={'Puppy'} control={<Radio onChange={handleDogAge} />} label={'Puppy'} />
             <FormControlLabel value={'Young Adult'} control={<Radio onChange={handleDogAge} />} label={'Young Adult'} />
@@ -331,7 +330,6 @@ function AddDog() {
 
         <Grid item xs={5}>
           <FormGroup row>
-            {/* checked={monday} */}
             <FormControlLabel label="M" control={<Checkbox onChange={handleMonday} />} labelPlacement="top" />
             <FormControlLabel label="T" control={<Checkbox onChange={handleTuesday} />} labelPlacement="top" />
             <FormControlLabel label="W" control={<Checkbox onChange={handleWednesday} />} labelPlacement="top" />
