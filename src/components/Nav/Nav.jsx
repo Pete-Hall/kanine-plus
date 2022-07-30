@@ -8,8 +8,8 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   let userRole = 'user';
-  // default value for user is 1. (1 = user) (2 = admin)
-  if( user.role === 2) {
+  // default value for user is 1. (1 = admin) (2 = user)
+  if( user.role === 1) {
     userRole = 'admin'
   };
 

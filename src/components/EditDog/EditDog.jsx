@@ -392,7 +392,7 @@ function EditDog() {
 
           </Grid>
           :
-          <p>Loading</p>
+          <p>404 -page unavailable</p>
       }
 
 
