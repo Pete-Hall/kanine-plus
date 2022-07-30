@@ -219,6 +219,7 @@ function AddDog() {
         You added a dog
         </Alert>
       </Snackbar>
+      
       <Grid container sx={{ alignItems: 'center' }}>
 
         <Grid item xs={12}>
@@ -227,7 +228,7 @@ function AddDog() {
 
         <Grid item xs={12}>
           <input onChange={handleImage} type="file" accept="image/*"/>
-          <Button onClick={uploadImage}>Upload</Button>
+          <Button onClick={uploadImage}>Upload Image</Button>
         </Grid>
 
         <Grid item xs={1} >

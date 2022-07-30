@@ -16,6 +16,7 @@ function EditDog() {
   const origins = useSelector((store) => store.origins);
   const routes = useSelector((store) => store.routes);
   const details = useSelector((store) => store.details);
+  let cloudImage = useSelector(store => store.image);
 
   /* Send dispatches to start SAGAs */
   useEffect(() => {
@@ -23,6 +24,13 @@ function EditDog() {
     dispatch({ type: 'GET_ROUTES' });
     dispatch({ type: 'GET_DETAILS', payload: id });
   }, []);
+
+  /* Set the image source as the image from the reducer once it's filled with the image data */
+  useEffect(() => {
+    if(cloudImage.length > 0) {
+      setImageToShow(cloudImage)
+    };
+  }, [cloudImage])
 
   /* Hooks */ // could replace this with one hook (ex formData) and put an object of each hook in the useState. Spread operator to only update one in setFormDate
   const [monday, setMonday] = useState(false);
@@ -44,6 +52,10 @@ function EditDog() {
   const [ownerPhone1, setOwnerPhone1] = useState('');
   const [ownerPhone2, setOwnerPhone2] = useState('');
   const [pickup, setPickup] = useState('');
+
+  const [imageSelected, setImageSelected] = useState('');
+  const [imageToShow, setImageToShow] = useState('')
+
 
   /* When a day variable is changed, console.log the current value of each day */
   useEffect(() => {
@@ -148,6 +160,10 @@ function EditDog() {
     setDropoff(e.target.value);
   };
 
+  const handleImage = (event) => {
+    setImageSelected(event.target.files[0]);
+  }
+
   const handleOwnerEmail = (e) => {
     setOwnerEmail(e.target.value);
   };
@@ -188,11 +204,20 @@ function EditDog() {
       originID: dogOrigin,
       driving_routeID: dogRoute,
       id: id,
-      gender: dogGender
+      gender: dogGender,
+      image: imageToShow,
     };
     console.log('info to update:', newDog);
     dispatch({ type: 'UPDATE_DOG', payload: newDog });
     goBack();
+  }
+
+  const uploadImage = () => {
+    console.log(imageSelected);
+    let imageToSend = new FormData();
+    imageToSend.append('file', imageSelected);
+    console.log(imageToSend);
+    dispatch({type: 'SEND_IMAGE', payload: imageToSend});
   }
 
   return (
@@ -201,8 +226,17 @@ function EditDog() {
         details.length > 0 ?
           <Grid container sx={{ alignItems: 'center' }}>
 
-            <Grid item xs={12}>
+            <Grid item xs={4}>
               <img src={details[0].image} />
+            </Grid>
+
+            <Grid item xs={2}>
+              <img src={imageToShow} />
+            </Grid>
+
+            <Grid item xs={12}>
+              <input onChange={handleImage} type="file" accept="image/*" />
+              <Button onClick={uploadImage}>Upload New Image</Button>
             </Grid>
 
             <Grid item xs={1} >
