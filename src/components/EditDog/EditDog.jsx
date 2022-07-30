@@ -227,11 +227,11 @@ function EditDog() {
         details.length > 0 ?
           <Grid container sx={{ alignItems: 'center' }}>
 
-            <Grid item xs={4}>
+            <Grid item xs={1}>
               <img src={details[0].image} />
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={1}>
               <img src={imageToShow} />
             </Grid>
 
