@@ -209,6 +209,7 @@ function EditDog() {
     };
     console.log('info to update:', newDog);
     dispatch({ type: 'UPDATE_DOG', payload: newDog });
+    dispatch({type: 'CLEAR_IMAGE'});
     goBack();
   }
 
