@@ -9,13 +9,13 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
--- Create origin table (Rescue Breeder, Unknown)
+-- Create origin table (Rescue Breeder, Unknown, Adoption)
 CREATE TABLE "origin" (
 	"id" SERIAL PRIMARY KEY,
 	"type" VARCHAR (255)
 );
 
--- Create driving_route table (Emerson, Tangletown, Misfits, Far, Floater)
+-- Create driving_route table (Emerson, Tangletown, Misfits, Far, Floater, Undecided)
 CREATE TABLE "driving_route" (
 	"id" SERIAL PRIMARY KEY,
 	"name" VARCHAR (255)
@@ -39,20 +39,24 @@ CREATE TABLE "dog" (
 	"owner_phone_one" VARCHAR (255),
 	"owner_phone_two" VARCHAR (255),
 	"pick_up" VARCHAR (1000),
-	"drop_off" VARCHAR (1000)
+	"drop_off" VARCHAR (1000),
+	"gender" VARCHAR (255),
+	"image" VARCHAR (1000),
+	"userID" integer
 );
 
 -- Create the note table
 CREATE TABLE "note" (
 	"id" SERIAL PRIMARY KEY,
-	"content" VARCHAR (1000)
+	"content" VARCHAR (1000),
+	"date" VARCHAR (255)
 );
 
 -- Add in data for origin
-INSERT INTO origin ("type") VALUES ('Rescue'), ('Breeder'), ('Unknown');
+INSERT INTO origin ("type") VALUES ('Rescue'), ('Breeder'), ('Unknown'), ('Adoption');
 
 -- Add in data for driving_route
-INSERT INTO driving_route ("name") VALUES ('Emerson'), ('Tangletown'), ('Misfits'), ('Far'), ('Floater');
+INSERT INTO driving_route ("name") VALUES ('Emerson'), ('Tangletown'), ('Misfits'), ('Far'), ('Floater'), ('Undecided');
 
 -- Add a foreign key to the dog table for the origin 
 ALTER TABLE "public"."dog"
