@@ -25,7 +25,7 @@ function EditDog() {
     dispatch({ type: 'GET_DETAILS', payload: id });
   }, []);
 
-  /* Set the image source as the image url from the reducer once it's filled with said image url */
+  /* Set the image source as the image url from the reducer once it's updated. This comes into affect when the user uploads a new image */
   useEffect(() => {
     if(cloudImage.length > 0) {
       setImageToShow(cloudImage)
@@ -62,7 +62,7 @@ function EditDog() {
     console.log('value of MTWRF:', monday, tuesday, wednesday, thursday, friday);
   }, [monday, tuesday, wednesday, thursday, friday]);
 
-  /* When details is updated, run this conditional and if it's true, set the hooks to the values coming in from the details reducer */
+  /* When details reducer is updated, run this conditional and if it's true, set the hooks to the values coming in from the details reducer (aka from the database) */
   useEffect(() => {
     if (details.length > 0) {
       setMonday(details[0].monday);
@@ -84,6 +84,8 @@ function EditDog() {
       setOwnerPhone1(details[0].owner_phone_one);
       setOwnerPhone2(details[0].owner_phone_two);
       setPickup(details[0].pick_up);
+
+      setImageToShow(details[0].image)
     }
   }, [details])
 
@@ -209,7 +211,6 @@ function EditDog() {
     };
     console.log('info to update:', newDog);
     dispatch({ type: 'UPDATE_DOG', payload: newDog });
-    dispatch({type: 'CLEAR_IMAGE'});
     goBack();
   }
 
@@ -227,12 +228,9 @@ function EditDog() {
         details.length > 0 ?
           <Grid container sx={{ alignItems: 'center' }}>
 
-            <Grid item xs={1}>
-              <img src={details[0].image} />
-            </Grid>
-
-            <Grid item xs={1}>
-              <img src={imageToShow} />
+            <Grid item xs={12}>
+              <img src={imageToShow}/>
+              {/* By using the hook image as the src, we take the url that's in the database returned by the details reducer. If the user then uploads a new image, the cloudImage reducer is filled and sets the new image url */}
             </Grid>
 
             <Grid item xs={12}>
