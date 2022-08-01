@@ -18,6 +18,7 @@ function AddDog() {
 
   /* Send dispatches to start SAGAs */
   useEffect(() => {
+    dispatch({type: 'CLEAR_IMAGE'});
     dispatch({ type: 'GET_ORIGINS' });
     dispatch({ type: 'GET_ROUTES' });
   }, []);
@@ -96,11 +97,11 @@ function AddDog() {
 
   const handleAutoFill = () => {
     setAddress('5783 Xerxes Ave E, Minneapolis, MN, 55410');
-    setDogBreed('Golden Doodle');
-    setDogName('Rosie');
+    setDogBreed('Golden Retriever');
+    setDogName('Frank');
     setDropoff('Back door off the porch. Key. In crate');
-    setOwnerEmail('drdolittle@gmail.com');
-    setOwnerName('Dr. Dolittle');
+    setOwnerEmail('steve@gmail.com');
+    setOwnerName('Steve Hall');
     setOwnerPhone1('651-123-4567');
     setOwnerPhone2('651-098-7654');
     setPickup('Back door off the porch. Key. Put back in crate');
