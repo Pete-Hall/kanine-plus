@@ -8,7 +8,7 @@
   <!-- <h3 align="center">Kanine+</h3> -->
 
   <p align="center">
-    A DRM (Dog Relationship Managment) system to orgnazize and streamline dog walking operations.
+    A DRM (Dog Relationship Managment) system to organize and streamline dog walking operations.
     <br />
     <!-- <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br /> -->
