@@ -1,121 +1,207 @@
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Pete-Hall/kanine-plus">
+    <img src="images/kanine+.png" alt="Logo" width="auto" height="45">
+  </a>
 
-# Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+  <!-- <h3 align="center">Kanine+</h3> -->
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+  <p align="center">
+    A DRM (Dog Relationship Managment) system to orgnazize and streamline dog walking operations.
+    <br />
+    <!-- <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <br /> -->
+    <br />
+    <a href="https://github.com/Pete-Hall/kanine-plus">View Demo (in progress)</a>
+    ·
+    <a href="https://github.com/Pete-Hall/kanine-plus/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Pete-Hall/kanine-plus/issues">Request Feature</a>
+  </p>
+</div>
 
-## Use the Template for This Repository (Don't Clone)
-
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account. Make the project `PUBLIC`!
 
 
-## Prerequisites
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <!-- <li><a href="#usage">Usage</a></li> -->
+    <li><a href="#roadmap">Roadmap</a></li>
+    <!-- <li><a href="#contributing">Contributing</a></li> -->
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-Before you get started, make sure you have the following software installed on your computer:
 
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
 
-## Create database and table
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Create a new database called `prime_app` and create a `user` table:
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+_Duration: 2 week sprint for MVP_
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+I work as a professional part time walker for a small business based out of south Minneapolis. They manage all of their dog specific data manually (i.e. spreadsheets). I wanted to design what could be used as an internal tool for them to manage all of their dog specific data in order to streamline their operations.
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+Feature overview:
+* User authentication and authorization
+* Users can add new dogs to the system, edit that information, read it, and delete dog's entirely from the system all in a modern interface
+* Users can upload a image of a dog and add notes for a specific dog
 
-## Development Setup Instructions
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-- Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-  ```
-  SERVER_SESSION_SECRET=superDuperSecret
-  ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm run server`
-- Run `npm run client`
-- Navigate to `localhost:3000`
 
-## Debugging
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+### Built With
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+* React.js
+* Redux
+* Redx-Saga
+* React-Router
+* Material UI
+* Node.js
+* Express.js
+* PostgreSQL
+* Multer
+* Cloudinary
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Testing Routes with Postman
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
+<!-- GETTING STARTED -->
+## Getting Started
 
-1. Start the server - `npm run server`
-2. Import the sample routes JSON file [v2](./PostmanPrimeSoloRoutesv2.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
+To get a local copy up and running follow these simple example steps.
 
-After running the login route above, you can try any other route you've created that requires a logged in user!
+### Prerequisites
 
-## Production Build
+([Node.js](https://nodejs.org/en/) is used in this project)
 
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
+### Installation
 
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
+1. Get a free API Key at [https://cloudinary.com/](https://cloudinary.com/)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/Pete-Hall/kanine-plus
+   ```
+3. Install the NPM packages used in this project
+   ```sh
+   npm install
+   ```
+4. Create a .env file and enter your API information
+   ```js
+   CLOUD_NAME = 'ENTER YOUR CLOUD_NAME HERE'
+   API_KEY = 'ENTER YOUR API_KEY HERE'
+   API_SECRET = 'ENTER YOUR API_SECRET HERE'
+   ```
+5. Create a database in named 'kanine_plus'. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. Using Postico is recommended to run queries as that was used to create the queries 
+6. The queries in the `database.sql` file are set up to create all the necessary tables and populate those tables with the data to allow the application to run correctly. Execute the queries in that file top to bottom
+7. Run `npm run server` in your terminal to start up the server
+8. Run `npm run client` in your terminal to start up the client in your browser
+9. The `npm run client` command will open up a new browser tab for you! (if not there will be a localhost link in your terminal you can use)
 
-## Lay of the Land
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
 
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
 
-Directory Structure:
+<!-- USAGE EXAMPLES -->
+<!-- ## Usage
 
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
+_For more examples, please refer to the [Documentation](https://example.com)_
 
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
-## Deployment
 
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
 
-## Update Documentation
+<!-- ROADMAP -->
+## Roadmap
 
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+- [ ] Deploy on Heroku
+- [ ] JEST/unit testing
+- [ ] Add Google Maps to add addresses and view where each dog lives on a map
+- [ ] Add a dynamic scheduler that generates the current week's schedule based on any previous ad-hoc changes
+- [ ] Add a 'walker' user role that can read all data and only create/delete notes for the dogs only in the system for the company they work for (authorization)
+- [ ] Add an admin settings component to allow the admin to control user permissions and certain features
+- [ ] Refactor code to re-use components
+- [ ] Refactor code to use formData to set state (as opposed to many hooks)
+
+See the [open issues](https://github.com/Pete-Hall/kanine-plus/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p> -->
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Pete Hall - pete.mack.hall@gmail.com
+
+Project Link: [https://github.com/Pete-Hall/kanine-plus](https://github.com/Pete-Hall/kanine-plus)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- HELPFUL -->
+## Helpful
+* [The Best README Template from othneildrew](https://github.com/othneildrew/Best-README-Template)
+* [Figma for wireframing](https://www.figma.com/files/recent?fuid=1128059971955892872)
+* [DB Designer for database ERD's](https://app.dbdesigner.net/)
+* [npm multer-storage-cloudinary for resouces to upload an image](https://www.npmjs.com/package/multer-storage-cloudinary)
+* [Material UI docs](https://mui.com/material-ui/getting-started/overview/)
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+I want to thank [Prime Digital Academy](www.primeacademy.io) and Dev for this amazing experience. My cohort for being the greatest of all time, my friends for understanding why I disappeared for the last 5 months, and my partner and family for making this possible. 
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
