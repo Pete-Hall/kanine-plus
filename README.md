@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+![Kanine+ Demo gif](/images/kanine%2Bdemo.gif)
 _Duration: 2 week sprint for MVP_
 
 I work as a professional part time walker for a small business based out of south Minneapolis. They manage all of their dog specific data manually (i.e. spreadsheets). I wanted to design what could be used as an internal tool for them to manage all of their dog specific data in order to streamline their operations.
