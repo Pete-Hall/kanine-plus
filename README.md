@@ -145,6 +145,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Add an admin settings component to allow the admin to control user permissions and certain features
 - [ ] Refactor code to re-use components
 - [ ] Refactor code to use formData to set state (as opposed to many hooks)
+- [ ] Refactor upload image to all happen with onChange
+- [ ] Add ability to delete an image when hovering over it in the edit mode
+
 
 See the [open issues](https://github.com/Pete-Hall/kanine-plus/issues) for a full list of proposed features (and known issues).
 
