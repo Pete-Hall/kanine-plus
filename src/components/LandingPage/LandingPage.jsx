@@ -32,6 +32,7 @@ function LandingPage() {
             <li>Express</li>
             <li>Postgres</li>
             <li>Cloudinary</li>
+            <li>Passport</li>
           </ul>
 
           <p>
